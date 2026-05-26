@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>يلا لايف - بث مباشر مباريات اليوم</title>
+    <link>https://www.tv-yalla.live/home/</link>
+    <description>يلا لايف yalla live مشاهدة مباريات اليوم بث مباشر بدون تقطيع yalla tv live موقع يلا لايف مباريات اليوم</description>
+    <language>ar</language>
+    <lastBuildDate>Tue, 26 May 2026 10:57:23 GMT</lastBuildDate>
+    <item>
+      <title>مباراة: Morocco × Burundi (07:00 PM)</title>
+      <link>https://www.tv-yalla.live/matches/morocco-vs-burundi/</link>
+      <description><![CDATA[
+        <div dir="rtl" style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+          <h3>⚽ Morocco ضد Burundi</h3>
+          <p><strong>⏰ توقيت المباراة:</strong> 07:00 PM (بتوقيت الرياض)</p>
+          <p><strong>🏆 البطولة:</strong> Friendly Match</p>
+          <p><strong>📺 القناة الناقلة:</strong> Unknown</p>
+          <p><strong>🎤 المعلق الرياضي:</strong> Unknown</p>
+          <p><strong>⚡ حالة المباراة:</strong> Not Started (0)</p>
+          <p><a href="https://www.tv-yalla.live/matches/morocco-vs-burundi/" style="display: inline-block; padding: 8px 15px; background: #4d0b7a; color: white; text-decoration: none; border-radius: 4px;">مشاهدة البث المباشر 🎥</a></p>
+        </div>
+      ]]></description>
+      <category>Matches</category>
+      <guid>morocco-vs-burundi</guid>
+    </item>
+    <item>
+      <title>مباراة: Nigeria × Zimbabwe (09:30 PM)</title>
+      <link>https://www.tv-yalla.live/matches/nigeria-vs-zimbabwe/</link>
+      <description><![CDATA[
+        <div dir="rtl" style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+          <h3>⚽ Nigeria ضد Zimbabwe</h3>
+          <p><strong>⏰ توقيت المباراة:</strong> 09:30 PM (بتوقيت الرياض)</p>
+          <p><strong>🏆 البطولة:</strong> Friendly Match</p>
+          <p><strong>📺 القناة الناقلة:</strong> Unknown</p>
+          <p><strong>🎤 المعلق الرياضي:</strong> Unknown</p>
+          <p><strong>⚡ حالة المباراة:</strong> Not Started (0)</p>
+          <p><a href="https://www.tv-yalla.live/matches/nigeria-vs-zimbabwe/" style="display: inline-block; padding: 8px 15px; background: #4d0b7a; color: white; text-decoration: none; border-radius: 4px;">مشاهدة البث المباشر 🎥</a></p>
+        </div>
+      ]]></description>
+      <category>Matches</category>
+      <guid>nigeria-vs-zimbabwe</guid>
+    </item>
+    <item>
+      <title>مباراة: Saint-Étienne × Nice (09:45 PM)</title>
+      <link>https://www.tv-yalla.live/matches/as-saint-etienne-vs-nice/</link>
+      <description><![CDATA[
+        <div dir="rtl" style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
+          <h3>⚽ Saint-Étienne ضد Nice</h3>
+          <p><strong>⏰ توقيت المباراة:</strong> 09:45 PM (بتوقيت الرياض)</p>
+          <p><strong>🏆 البطولة:</strong> Ligue 1</p>
+          <p><strong>📺 القناة الناقلة:</strong> beIN Sports 2</p>
+          <p><strong>🎤 المعلق الرياضي:</strong> Nawfal Bashi</p>
+          <p><strong>⚡ حالة المباراة:</strong> Not Started (0)</p>
+          <p><a href="https://www.tv-yalla.live/matches/as-saint-etienne-vs-nice/" style="display: inline-block; padding: 8px 15px; background: #4d0b7a; color: white; text-decoration: none; border-radius: 4px;">مشاهدة البث المباشر 🎥</a></p>
+        </div>
+      ]]></description>
+      <category>Matches</category>
+      <guid>as-saint-etienne-vs-nice</guid>
+    </item>
+  </channel>
+</rss>

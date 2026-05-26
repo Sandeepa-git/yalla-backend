@@ -1,0 +1,23 @@
+{
+  "name": "yalla-xml-feed-center",
+  "version": "1.0.0",
+  "description": "Live scraper and XMLTV / RSS feed generator for TV-Yalla",
+  "main": "server.js",
+  "scripts": {
+    "generate": "node generator.js",
+    "generate:local": "node generator.js --local content.md",
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "yalla",
+    "scraper",
+    "xml",
+    "xmltv",
+    "rss",
+    "epg",
+    "iptv"
+  ],
+  "author": "Antigravity AI",
+  "license": "ISC"
+}

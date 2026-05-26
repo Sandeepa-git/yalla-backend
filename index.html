@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yalla Live XML Feed Center | يلا لايف مركز تغذية البث</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <style>
+    :root {
+      --bg-light: #f4f6fa;
+      --panel-light: rgba(255, 255, 255, 0.88);
+      --panel-border: rgba(0, 0, 0, 0.06);
+      --primary: #4d0b7a; /* Yalla Live Royal Purple */
+      --primary-glow: rgba(77, 11, 122, 0.15);
+      --secondary: #00b4d8; /* Modern Aqua Blue */
+      --secondary-glow: rgba(0, 180, 216, 0.15);
+      --accent: #ff007f;
+      --text-dark: #1a1e29;
+      --text-gray: #5f667d;
+      --text-muted: #8b93ad;
+      --success: #1b5e20;
+      --warning: #e65100;
+      --danger: #b71c1c;
+      --font-ar: 'Cairo', sans-serif;
+      --font-en: 'Outfit', sans-serif;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(77, 11, 122, 0.05) 0px, transparent 40%),
+        radial-gradient(at 100% 0%, rgba(0, 180, 216, 0.06) 0px, transparent 40%),
+        radial-gradient(at 50% 50%, rgba(255, 0, 127, 0.02) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-dark);
+      font-family: var(--font-ar);
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 50px;
+    }
+
+    /* English mode class */
+    body.ltr-mode {
+      font-family: var(--font-en);
+      direction: ltr;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Premium Glassmorphism Header */
+    header {
+      background: var(--panel-light);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 20px 30px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      box-shadow: 0 10px 30px rgba(77, 11, 122, 0.04), 0 1px 8px rgba(0, 0, 0, 0.01);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), #7c1fc5);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      color: #fff;
+    }
+
+    .logo-text h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text p {
+      font-size: 11px;
+      color: var(--secondary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Premium Button Style */
+    .btn {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: var(--text-dark);
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn:hover {
+      background: #fdfdfd;
+      border-color: rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #6714a1);
+      border: none;
+      color: #ffffff;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #6714a1, var(--primary));
+      box-shadow: 0 6px 20px rgba(77, 11, 122, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, rgba(0, 180, 216, 0.05), rgba(0, 180, 216, 0.1));
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      box-shadow: 0 2px 5px rgba(0, 180, 216, 0.05);
+    }
+
+    .btn-secondary:hover {
+      background: var(--secondary);
+      color: #fff;
+      box-shadow: 0 4px 12px var(--secondary-glow);
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(46, 125, 50, 0.08);
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      background-color: currentColor;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 currentColor;
+      animation: pulse-animation 1.5s infinite;
+    }
+
+    @keyframes pulse-animation {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(46, 125, 50, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
+      }
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: var(--panel-light);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.01);
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      border-color: rgba(77, 11, 122, 0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(77, 11, 122, 0.06);
+    }
+
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--panel-border);
+    }
+
+    .stat-card.primary-style .stat-icon {
+      color: var(--primary);
+      background: rgba(77, 11, 122, 0.08);
+      border-color: rgba(77, 11, 122, 0.15);
+    }
+
+    .stat-card.secondary-style .stat-icon {
+      color: var(--secondary);
+      background: rgba(0, 180, 216, 0.08);
+      border-color: rgba(0, 180, 216, 0.15);
+    }
+
+    .stat-card.accent-style .stat-icon {
+      color: var(--accent);
+      background: rgba(255, 0, 127, 0.06);
+      border-color: rgba(255, 0, 127, 0.1);
+    }
+
+    .stat-info h3 {
+      font-size: 13px;
+      color: var(--text-gray);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .stat-info .stat-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-dark);
+      font-family: var(--font-en);
+    }
+
+    /* Core Layout */
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1.5fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--panel-light);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--panel-border);
+      padding-bottom: 12px;
+    }
+
+    .card-title-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Feed Links List */
+    .feed-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .feed-link-item {
+      background: #fcfdfe;
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 15px;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+    }
+
+    .feed-link-item:hover {
+      background: #ffffff;
+      border-color: rgba(77, 11, 122, 0.15);
+      box-shadow: 0 4px 15px rgba(77, 11, 122, 0.03);
+    }
+
+    .feed-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .feed-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feed-ext {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-en);
+    }
+
+    .feed-ext.xml {
+      background: rgba(230, 81, 0, 0.08);
+      color: #e65100;
+      border: 1px solid rgba(230, 81, 0, 0.2);
+    }
+
+    .feed-ext.json {
+      background: rgba(2, 136, 209, 0.08);
+      color: #0288d1;
+      border: 1px solid rgba(2, 136, 209, 0.2);
+    }
+
+    .feed-url-box {
+      background: #f1f3f7;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .feed-url {
+      font-family: var(--font-en);
+      font-size: 12px;
+      color: var(--text-gray);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      direction: ltr;
+      text-align: left;
+      flex: 1;
+    }
+
+    .feed-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.08);
+      color: var(--text-dark);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .btn-action:hover {
+      background: #f6f8fa;
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .btn-action.active-style {
+      background: rgba(77, 11, 122, 0.05);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-action.active-style:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Matches Schedule Display */
+    .matches-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .match-item-card {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .match-item-card:hover {
+      border-color: rgba(77, 11, 122, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(77, 11, 122, 0.05);
+    }
+
+    .match-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-gray);
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
+      padding-bottom: 8px;
+    }
+
+    .match-tournament {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .match-channel {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f1f3f7;
+      padding: 2px 8px;
+      border-radius: 12px;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .match-vs-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    .match-team {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .match-team.team-1 {
+      justify-content: flex-start;
+    }
+
+    .match-team.team-2 {
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .team-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      padding: 4px;
+      border: 1px solid rgba(0,0,0,0.06);
+      object-fit: contain;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .team-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .match-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 0 15px;
+    }
+
+    .match-time {
+      font-family: var(--font-en);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(77, 11, 122, 0.05);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(77, 11, 122, 0.1);
+    }
+
+    .match-score {
+      font-family: var(--font-en);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--text-dark);
+    }
+
+    .match-status-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 30px;
+      text-transform: uppercase;
+    }
+
+    .match-status-badge.live {
+      background: rgba(208, 0, 0, 0.08);
+      color: var(--danger);
+      border: 1px solid rgba(208, 0, 0, 0.2);
+      animation: blinker-anim 1s linear infinite;
+    }
+
+    .match-status-badge.not-started {
+      background: rgba(0, 180, 216, 0.08);
+      color: #0077b6;
+      border: 1px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .match-status-badge.finished {
+      background: #f1f3f7;
+      color: var(--text-gray);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    @keyframes blinker-anim {
+      50% { opacity: 0.6; }
+    }
+
+    .match-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-gray);
+      background: #f8fafc;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .match-commentator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .no-matches-msg {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-gray);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* Professional Code Preview Container */
+    .preview-box {
+      background: #1e1e1e; /* Developer Dark Preview Frame for absolute syntax contrast */
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      position: relative;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .preview-header {
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .preview-title {
+      font-size: 13px;
+      color: #00b4d8;
+      font-weight: 700;
+      font-family: var(--font-en);
+    }
+
+    .preview-code {
+      width: 100%;
+      height: 380px;
+      overflow: auto;
+      padding: 15px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #d4d4d4;
+      white-space: pre;
+      text-align: left;
+      direction: ltr;
+    }
+
+    /* XML Tag highlights */
+    .xml-tag { color: #569cd6; }
+    .xml-attr { color: #9cdcfe; }
+    .xml-val { color: #ce9178; }
+    .xml-comment { color: #6a9955; }
+    .xml-text { color: #d4d4d4; }
+
+    /* News Cards */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .news-card {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      height: 100%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .news-card:hover {
+      border-color: rgba(77, 11, 122, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(77, 11, 122, 0.06);
+    }
+
+    .news-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background-color: #f1f3f7;
+      border-bottom: 1px solid var(--panel-border);
+      transition: transform 0.5s ease;
+    }
+
+    .news-card:hover .news-img {
+      transform: scale(1.05);
+    }
+
+    .news-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .news-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    .news-link {
+      color: var(--secondary);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: var(--transition);
+    }
+
+    .news-link:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    /* Modal Console style overlay */
+    .console-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .console-box {
+      width: 100%;
+      max-width: 700px;
+      background: #111420;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .console-bar {
+      background: rgba(255,255,255,0.03);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    .console-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ff5f56;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .console-terminal {
+      padding: 20px;
+      font-family: 'Consolas', monospace;
+      font-size: 13px;
+      color: #00e676;
+      height: 300px;
+      overflow-y: auto;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      text-align: left;
+      direction: ltr;
+    }
+
+    /* Loading overlay */
+    .spinner-loader {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+    }
+
+    .tooltip::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .tooltip:hover::after {
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-gray);
+      font-size: 13px;
+      border-top: 1px solid var(--panel-border);
+      padding-top: 25px;
+      font-weight: 600;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--secondary);
+    }
+  </style>
+</head>
+<body class="ltr-mode">
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header>
+      <div class="logo-area">
+        <div class="logo-icon">📡</div>
+        <div class="logo-text">
+          <h1 id="lbl-title">Yalla Feed Center</h1>
+          <p id="lbl-subtitle">يلا لايف مركز تغذية البيانات</p>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <div class="badge-status">
+          <span class="pulse"></span>
+          <span id="lbl-server-status">خادم التغذية متصل</span>
+        </div>
+        
+        <button class="btn" id="btn-lang" onclick="toggleLanguage()">
+          🌐 العربية
+        </button>
+        
+        <button class="btn btn-primary" id="btn-sync" onclick="triggerScrape()">
+          <span class="loader-container" style="display: none;"><span class="spinner-loader"></span></span>
+          <span id="lbl-sync-text">تحديث ومزامنة البيانات</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card primary-style">
+        <div class="stat-icon">⚽</div>
+        <div class="stat-info">
+          <h3 id="lbl-stat-matches">إجمالي المباريات المكتشفة</h3>
+          <div class="stat-value" id="stat-count-matches">0</div>
+        </div>
+      </div>
+      
+      <div class="stat-card secondary-style">
+        <div class="stat-icon">📡</div>
+        <div class="stat-info">
+          <h3 id="lbl-stat-live">مباريات جارية الآن</h3>
+          <div class="stat-value" id="stat-count-live">0</div>
+        </div>
+      </div>
+      
+      <div class="stat-card accent-style">
+        <div class="stat-icon">📰</div>
+        <div class="stat-info">
+          <h3 id="lbl-stat-news">آخر المقالات والأخبار</h3>
+          <div class="stat-value" id="stat-count-news">0</div>
+        </div>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-icon">⏰</div>
+        <div class="stat-info">
+          <h3 id="lbl-stat-time">آخر تحديث للموجز</h3>
+          <div class="stat-value" id="stat-update-time" style="font-size: 14px; font-weight: 700; margin-top: 5px;">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Layout -->
+    <div class="dashboard-layout">
+      
+      <!-- Left Column: XML Feed Links & Previewer -->
+      <div class="left-column">
+        
+        <div class="card">
+          <div class="card-title">
+            <div class="card-title-icon">
+              <span>🔗</span>
+              <span id="lbl-feed-links-title">روابط تلقيم XML المنتجة</span>
+            </div>
+          </div>
+          
+          <div class="feed-links-list">
+            
+            <!-- Custom Match Feed XML -->
+            <div class="feed-link-item">
+              <div class="feed-meta">
+                <span class="feed-name">
+                  <span>⚽</span> <span id="lbl-feed-matches-name">موجز جدول المباريات</span>
+                </span>
+                <span class="feed-ext xml">xml</span>
+              </div>
+              <div class="feed-url-box">
+                <span class="feed-url" id="url-matches">/data/yalla_live_matches.xml</span>
+                <button class="btn-action tooltip" data-tooltip="Copy URL" onclick="copyUrl('matches')">📋</button>
+              </div>
+              <div class="feed-actions">
+                <button class="btn-action active-style" onclick="previewFile('matches')">👁️ <span id="lbl-view-code-1">عرض الكود</span></button>
+                <a href="/data/yalla_live_matches.xml" download class="btn-action">📥 <span id="lbl-down-1">تحميل</span></a>
+              </div>
+            </div>
+
+            <!-- XMLTV EPG -->
+            <div class="feed-link-item">
+              <div class="feed-meta">
+                <span class="feed-name">
+                  <span>📺</span> <span id="lbl-feed-epg-name">تلقيم دليل البرامج الإلكتروني XMLTV</span>
+                </span>
+                <span class="feed-ext xml">xml</span>
+              </div>
+              <div class="feed-url-box">
+                <span class="feed-url" id="url-epg">/data/yalla_live_xmltv.xml</span>
+                <button class="btn-action tooltip" data-tooltip="Copy URL" onclick="copyUrl('epg')">📋</button>
+              </div>
+              <div class="feed-actions">
+                <button class="btn-action active-style" onclick="previewFile('epg')">👁️ <span id="lbl-view-code-2">عرض الكود</span></button>
+                <a href="/data/yalla_live_xmltv.xml" download class="btn-action">📥 <span id="lbl-down-2">تحميل</span></a>
+              </div>
+            </div>
+
+            <!-- RSS 2.0 Feed -->
+            <div class="feed-link-item">
+              <div class="feed-meta">
+                <span class="feed-name">
+                  <span>📻</span> <span id="lbl-feed-rss-name">تلقيم RSS الموجز الإخباري للمباريات</span>
+                </span>
+                <span class="feed-ext xml">xml</span>
+              </div>
+              <div class="feed-url-box">
+                <span class="feed-url" id="url-rss">/data/yalla_live_feed.xml</span>
+                <button class="btn-action tooltip" data-tooltip="Copy URL" onclick="copyUrl('rss')">📋</button>
+              </div>
+              <div class="feed-actions">
+                <button class="btn-action active-style" onclick="previewFile('rss')">👁️ <span id="lbl-view-code-3">عرض الكود</span></button>
+                <a href="/data/yalla_live_feed.xml" download class="btn-action">📥 <span id="lbl-down-3">تحميل</span></a>
+              </div>
+            </div>
+
+            <!-- JSON Format Data -->
+            <div class="feed-link-item">
+              <div class="feed-meta">
+                <span class="feed-name">
+                  <span>📦</span> <span id="lbl-feed-json-name">مخرجات البيانات بصيغة JSON</span>
+                </span>
+                <span class="feed-ext json">json</span>
+              </div>
+              <div class="feed-url-box">
+                <span class="feed-url" id="url-json">/data/yalla_live_data.json</span>
+                <button class="btn-action tooltip" data-tooltip="Copy URL" onclick="copyUrl('json')">📋</button>
+              </div>
+              <div class="feed-actions">
+                <button class="btn-action active-style" onclick="previewFile('json')">👁️ <span id="lbl-view-code-4">عرض الكود</span></button>
+                <a href="/data/yalla_live_data.json" download class="btn-action">📥 <span id="lbl-down-4">تحميل</span></a>
+              </div>
+            </div>
+
+            <!-- Blogger Theme XML -->
+            <div class="feed-link-item">
+              <div class="feed-meta">
+                <span class="feed-name">
+                  <span>🎨</span> <span id="lbl-feed-theme-name">قالب بلوجر Blogger XML للمدونة</span>
+                </span>
+                <span class="feed-ext xml">xml</span>
+              </div>
+              <div class="feed-url-box">
+                <span class="feed-url" id="url-theme">/yalla_blogger_theme.xml</span>
+                <button class="btn-action tooltip" data-tooltip="Copy URL" onclick="copyUrl('theme')">📋</button>
+              </div>
+              <div class="feed-actions">
+                <button class="btn-action active-style" onclick="previewFile('theme')">👁️ <span id="lbl-view-code-5">عرض الكود</span></button>
+                <a href="/yalla_blogger_theme.xml" download class="btn-action">📥 <span id="lbl-down-5">تحميل</span></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Live Code Viewer -->
+        <div class="card" style="margin-bottom: 0;">
+          <div class="card-title" style="margin-bottom: 10px;">
+            <div class="card-title-icon">
+              <span>💻</span>
+              <span id="lbl-viewer-title">مستعرض الكود التفاعلي لملفات XML</span>
+            </div>
+          </div>
+          <div class="preview-box">
+            <div class="preview-header">
+              <div class="preview-title" id="preview-file-title">yalla_live_matches.xml</div>
+              <button class="btn-action" style="padding: 4px 10px; font-size: 11px;" onclick="copyPreviewedCode()">📋 Copy Code</button>
+            </div>
+            <pre class="preview-code" id="code-output">اختر ملفاً من الأعلى لعرض محتوياته مباشرة هنا...</pre>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Live Match Cards and News -->
+      <div class="right-column">
+        
+        <!-- Live Match schedule card -->
+        <div class="card">
+          <div class="card-title">
+            <div class="card-title-icon">
+              <span>📅</span>
+              <span id="lbl-matches-title">جدول مباريات اليوم المجدولة</span>
+            </div>
+          </div>
+          
+          <div class="matches-list" id="matches-container">
+            <div class="no-matches-msg" id="lbl-loading-matches">جاري تحميل جدول المباريات من خادم الموجز...</div>
+          </div>
+        </div>
+
+        <!-- Sports News card -->
+        <div class="card" style="margin-bottom: 0;">
+          <div class="card-title">
+            <div class="card-title-icon">
+              <span>📰</span>
+              <span id="lbl-news-title">آخر المقالات والأخبار الرياضية المقروءة</span>
+            </div>
+          </div>
+          
+          <div class="news-grid" id="news-container">
+            <div class="no-matches-msg" id="lbl-loading-news">جاري تحميل الأخبار والمستجدات...</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+      <p id="lbl-footer">مركز تلقيم وتغذية قنوات ومباريات يلا لايف EPG & XML & RSS | تم التطوير بواسطة Antigravity AI</p>
+      <p style="font-size: 11px; margin-top: 5px; color: var(--secondary);">Powered by Google DeepMind Advanced Agentic Coding Project</p>
+    </footer>
+
+  </div>
+
+  <!-- Terminal Output overlay modal -->
+  <div class="console-overlay" id="console-modal">
+    <div class="console-box">
+      <div class="console-bar">
+        <span style="font-weight: 700; font-size: 14px;" id="lbl-terminal-title">عملية جلب ومزامنة البيانات جارية...</span>
+        <span class="console-dot" onclick="closeConsole()"></span>
+      </div>
+      <div class="console-terminal" id="terminal-output">Running scrape process...</div>
+      <div style="padding: 15px; text-align: right; background: rgba(255,255,255,0.02); border-top: 1px solid var(--panel-border);">
+        <button class="btn btn-secondary" onclick="closeConsole()" style="padding: 6px 15px; font-size: 12px;" id="lbl-close">إغلاق النافذة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translation Dictionary -->
+  <script>
+    const i18n = {
+      ar: {
+        title: "Yalla Live Feed Center",
+        subtitle: "يلا لايف مركز تغذية البيانات",
+        serverStatus: "خادم التغذية متصل",
+        syncText: "تحديث ومزامنة البيانات",
+        statMatches: "إجمالي المباريات المكتشفة",
+        statLive: "مباريات جارية الآن",
+        statNews: "آخر المقالات والأخبار",
+        statTime: "آخر تحديث للموجز",
+        feedLinksTitle: "روابط تلقيم XML المنتجة",
+        feedMatchesName: "موجز جدول المباريات",
+        feedEpgName: "تلقيم دليل البرامج الإلكتروني XMLTV",
+        feedRssName: "تلقيم RSS الموجز الإخباري للمباريات",
+        feedJsonName: "مخرجات البيانات بصيغة JSON",
+        feedThemeName: "قالب بلوجر Blogger XML للمدونة",
+        viewCode: "عرض الكود",
+        down: "تحميل",
+        viewerTitle: "مستعرض الكود التفاعلي لملفات XML",
+        matchesTitle: "جدول مباريات اليوم المجدولة",
+        newsTitle: "آخر المقالات والأخبار الرياضية المقروءة",
+        footer: "مركز تلقيم وتغذية قنوات ومباريات يلا لايف EPG & XML & RSS | تم التطوير بواسطة Antigravity AI",
+        terminalTitle: "عملية جلب ومزامنة البيانات جارية...",
+        close: "إغلاق النافذة",
+        loading: "جاري العمل ومزامنة الخادم...",
+        noMatches: "لا توجد مباريات مجدولة لليوم في ملف البيانات.",
+        noNews: "لا توجد مقالات رياضية حالياً.",
+        statNotStarted: "لم تبدأ بعد",
+        statLiveText: "مباراة جارية",
+        statEnded: "انتهت",
+        streamLink: "شاهد البث المباشر 🎥",
+        channelText: "القناة:",
+        commText: "المعلق:"
+      },
+      en: {
+        title: "Yalla Live Feed Center",
+        subtitle: "Scraper & XML Feed Service",
+        serverStatus: "Feed Server Online",
+        syncText: "Scrape & Sync Live Data",
+        statMatches: "Total Matches Scraped",
+        statLive: "Active Live Matches",
+        statNews: "Scraped Sports Articles",
+        statTime: "Feed Last Sync Time",
+        feedLinksTitle: "Generated XML / JSON Feeds",
+        feedMatchesName: "Structured Matches Data Feed",
+        feedEpgName: "XMLTV Electronic Program Guide (EPG)",
+        feedRssName: "Matches & News RSS 2.0 Feed",
+        feedJsonName: "Extracted JSON Raw Data Output",
+        feedThemeName: "Blogger XML Theme Template",
+        viewCode: "View XML Code",
+        down: "Download",
+        viewerTitle: "Interactive XML Code Previewer",
+        matchesTitle: "Scraped Today's Match Schedule",
+        newsTitle: "Scraped Latest Football News",
+        footer: "Yalla Live EPG & XML & RSS Feed Center | Developed by Antigravity AI",
+        terminalTitle: "Live Web Scraping & Feed Generation in Progress...",
+        close: "Close Console",
+        loading: "Running live scraper on server...",
+        noMatches: "No matches parsed for today in the data source.",
+        noNews: "No news articles found in the feed.",
+        statNotStarted: "Not Started",
+        statLiveText: "LIVE Match",
+        statEnded: "Ended",
+        streamLink: "Watch Stream Live 🎥",
+        channelText: "TV Channel:",
+        commText: "Commentator:"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      
+      const body = document.body;
+      const langBtn = document.getElementById('btn-lang');
+      
+      if (currentLang === 'en') {
+        body.classList.add('ltr-mode');
+        body.dir = 'ltr';
+        body.lang = 'en';
+        langBtn.innerText = '🌐 العربية';
+      } else {
+        body.classList.remove('ltr-mode');
+        body.dir = 'rtl';
+        body.lang = 'ar';
+        langBtn.innerText = '🌐 English';
+      }
+      
+      updateUiTranslations();
+      loadData(false);
+    }
+
+    function updateUiTranslations() {
+      const dict = i18n[currentLang];
+      
+      document.getElementById('lbl-title').innerText = dict.title;
+      document.getElementById('lbl-subtitle').innerText = dict.subtitle;
+      document.getElementById('lbl-server-status').innerText = dict.serverStatus;
+      document.getElementById('lbl-sync-text').innerText = dict.syncText;
+      
+      document.getElementById('lbl-stat-matches').innerText = dict.statMatches;
+      document.getElementById('lbl-stat-live').innerText = dict.statLive;
+      document.getElementById('lbl-stat-news').innerText = dict.statNews;
+      document.getElementById('lbl-stat-time').innerText = dict.statTime;
+      
+      document.getElementById('lbl-feed-links-title').innerText = dict.feedLinksTitle;
+      document.getElementById('lbl-feed-matches-name').innerText = dict.feedMatchesName;
+      document.getElementById('lbl-feed-epg-name').innerText = dict.feedEpgName;
+      document.getElementById('lbl-feed-rss-name').innerText = dict.feedRssName;
+      document.getElementById('lbl-feed-json-name').innerText = dict.feedJsonName;
+      document.getElementById('lbl-feed-theme-name').innerText = dict.feedThemeName;
+      
+      document.getElementById('lbl-view-code-1').innerText = dict.viewCode;
+      document.getElementById('lbl-view-code-2').innerText = dict.viewCode;
+      document.getElementById('lbl-view-code-3').innerText = dict.viewCode;
+      document.getElementById('lbl-view-code-4').innerText = dict.viewCode;
+      document.getElementById('lbl-view-code-5').innerText = dict.viewCode;
+      
+      document.getElementById('lbl-down-1').innerText = dict.down;
+      document.getElementById('lbl-down-2').innerText = dict.down;
+      document.getElementById('lbl-down-3').innerText = dict.down;
+      document.getElementById('lbl-down-4').innerText = dict.down;
+      document.getElementById('lbl-down-5').innerText = dict.down;
+      
+      document.getElementById('lbl-viewer-title').innerText = dict.viewerTitle;
+      document.getElementById('lbl-matches-title').innerText = dict.matchesTitle;
+      document.getElementById('lbl-news-title').innerText = dict.newsTitle;
+      document.getElementById('lbl-footer').innerText = dict.footer;
+      
+      document.getElementById('lbl-terminal-title').innerText = dict.terminalTitle;
+      document.getElementById('lbl-close').innerText = dict.close;
+    }
+
+    // Set server host URLs dynamically
+    const host = window.location.origin;
+    document.getElementById('url-matches').innerText = host + '/data/yalla_live_matches.xml';
+    document.getElementById('url-epg').innerText = host + '/data/yalla_live_xmltv.xml';
+    document.getElementById('url-rss').innerText = host + '/data/yalla_live_feed.xml';
+    document.getElementById('url-json').innerText = host + '/data/yalla_live_data.json';
+    document.getElementById('url-theme').innerText = host + '/yalla_blogger_theme.xml';
+
+    // Highlight XML Syntax
+    function highlightXml(xmlString) {
+      if (typeof xmlString !== 'string') return '';
+      // Escape HTML entities first
+      let html = xmlString
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+      
+      // Comments
+      html = html.replace(/(&lt;!--[\s\S]*?--&gt;)/g, '<span class="xml-comment">$1</span>');
+      
+      // Tag opening/closing
+      html = html.replace(/(&lt;\/?[a-zA-Z0-9_:]+)/g, '<span class="xml-tag">$1</span>');
+      html = html.replace(/(\/?&gt;)/g, '<span class="xml-tag">$1</span>');
+      
+      // Attributes
+      html = html.replace(/(\s[a-zA-Z0-9_:-]+=)/g, '<span class="xml-attr">$1</span>');
+      
+      // Attribute values
+      html = html.replace(/(&quot;[^&]*&quot;)/g, '<span class="xml-val">$1</span>');
+      html = html.replace(/(&apos;[^&]*&apos;)/g, '<span class="xml-val">$1</span>');
+      
+      return html;
+    }
+
+    // Load feeds data
+    let currentScrapedData = null;
+
+    async function loadData(showLoading = true) {
+      const container = document.getElementById('matches-container');
+      const newsContainer = document.getElementById('news-container');
+      const dict = i18n[currentLang];
+
+      if (showLoading) {
+        container.innerHTML = `<div class="no-matches-msg">${dict.loading}</div>`;
+        newsContainer.innerHTML = `<div class="no-matches-msg">${dict.loading}</div>`;
+      }
+
+      try {
+        const res = await fetch('/api/data');
+        const json = await res.json();
+        
+        if (json.success) {
+          currentScrapedData = json.data;
+          
+          // Set stats values
+          document.getElementById('stat-count-matches').innerText = json.data.matches.length;
+          document.getElementById('stat-count-news').innerText = json.data.news.length;
+          
+          // Calculate live matches count
+          const liveCount = json.data.matches.filter(m => m.statusClass === 'live').length;
+          document.getElementById('stat-count-live').innerText = liveCount;
+          
+          // Format date nicely
+          const date = new Date(json.meta.last_updated);
+          document.getElementById('stat-update-time').innerText = date.toLocaleString(
+            currentLang === 'ar' ? 'ar-SA' : 'en-US', 
+            { hour: '2-digit', minute: '2-digit', second: '2-digit', day: '2-digit', month: 'short' }
+          );
+
+          // Populate Matches List
+          if (json.data.matches.length === 0) {
+            container.innerHTML = `<div class="no-matches-msg">${dict.noMatches}</div>`;
+          } else {
+            let matchesHtml = '';
+            json.data.matches.forEach(m => {
+              const statusClass = m.statusClass === 'live' ? 'live' : (m.statusClass === 'finished' ? 'finished' : 'not-started');
+              let statusText = dict.statNotStarted;
+              if (m.statusClass === 'live') statusText = dict.statLiveText;
+              if (m.statusClass === 'finished') statusText = dict.statEnded;
+              if (m.statusText && m.statusText !== 'لم تبدأ بعد' && m.statusText !== 'انتهت' && m.statusText !== 'started') {
+                statusText = m.statusText;
+              }
+
+              matchesHtml += `
+                <div class="match-item-card">
+                  <div class="match-header">
+                    <span class="match-tournament">🏆 ${m.tournament}</span>
+                    <span class="match-channel">📺 ${m.channel}</span>
+                  </div>
+                  
+                  <div class="match-vs-area">
+                    <div class="match-team team-1">
+                      <img class="team-logo" src="${m.team1.logo || 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23222%22/></svg>'}" alt="${m.team1.name}" />
+                      <span class="team-name">${m.team1.name}</span>
+                    </div>
+                    
+                    <div class="match-center">
+                      <span class="match-time">${m.time}</span>
+                      <span class="match-score">${m.score || '0 - 0'}</span>
+                      <span class="match-status-badge ${statusClass}">${statusText}</span>
+                    </div>
+                    
+                    <div class="match-team team-2">
+                      <img class="team-logo" src="${m.team2.logo || 'data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23222%22/></svg>'}" alt="${m.team2.name}" />
+                      <span class="team-name">${m.team2.name}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="match-footer">
+                    <span class="match-commentator">🎤 ${dict.commText} ${m.commentator}</span>
+                    <a href="${m.link}" target="_blank" class="news-link">${dict.streamLink}</a>
+                  </div>
+                </div>
+              `;
+            });
+            container.innerHTML = matchesHtml;
+          }
+
+          // Populate News
+          if (json.data.news.length === 0) {
+            newsContainer.innerHTML = `<div class="no-matches-msg">${dict.noNews}</div>`;
+          } else {
+            let newsHtml = '';
+            json.data.news.forEach(item => {
+              newsHtml += `
+                <div class="news-card">
+                  ${item.image ? `<img class="news-img" src="${item.image}" alt="${item.title}" />` : '<div class="news-img" style="display:flex;align-items:center;justify-content:center;font-size:36px;background:rgba(255,255,255,0.01);">📰</div>'}
+                  <div class="news-body">
+                    <div class="news-title">${item.title}</div>
+                    <a href="${item.link}" target="_blank" class="news-link">اقرأ المزيد 🌐</a>
+                  </div>
+                </div>
+              `;
+            });
+            newsContainer.innerHTML = newsHtml;
+          }
+          
+          // Auto preview the matches file
+          previewFile('matches', false);
+        } else {
+          container.innerHTML = `<div class="no-matches-msg">${json.message || 'Error loading data.'}</div>`;
+          newsContainer.innerHTML = `<div class="no-matches-msg">${json.message || 'Error loading data.'}</div>`;
+        }
+      } catch (err) {
+        container.innerHTML = `<div class="no-matches-msg">Server error fetching feeds data: ${err.message}</div>`;
+        newsContainer.innerHTML = `<div class="no-matches-msg">Server error fetching feeds data.</div>`;
+      }
+    }
+
+    // Preview File Code
+    let currentPreviewedText = '';
+    async function previewFile(type, highlight = true) {
+      const paths = {
+        matches: '/data/yalla_live_matches.xml',
+        epg: '/data/yalla_live_xmltv.xml',
+        rss: '/data/yalla_live_feed.xml',
+        json: '/data/yalla_live_data.json',
+        theme: '/yalla_blogger_theme.xml'
+      };
+
+      const titles = {
+        matches: 'yalla_live_matches.xml',
+        epg: 'yalla_live_xmltv.xml',
+        rss: 'yalla_live_feed.xml',
+        json: 'yalla_live_data.json',
+        theme: 'yalla_blogger_theme.xml'
+      };
+
+      const previewTitle = document.getElementById('preview-file-title');
+      const codeOutput = document.getElementById('code-output');
+      
+      previewTitle.innerText = titles[type];
+      codeOutput.innerText = 'Loading file contents...';
+      
+      try {
+        const res = await fetch(paths[type]);
+        const text = await res.text();
+        currentPreviewedText = text;
+        
+        if (highlight) {
+          if (type === 'json') {
+            codeOutput.innerText = JSON.stringify(JSON.parse(text), null, 2);
+          } else {
+            codeOutput.innerHTML = highlightXml(text);
+          }
+        } else {
+          codeOutput.innerText = text;
+        }
+      } catch (err) {
+        codeOutput.innerText = 'Error reading file: ' + err.message;
+      }
+    }
+
+    // Clipboard utils
+    function copyUrl(type) {
+      const urls = {
+        matches: '/data/yalla_live_matches.xml',
+        epg: '/data/yalla_live_xmltv.xml',
+        rss: '/data/yalla_live_feed.xml',
+        json: '/data/yalla_live_data.json',
+        theme: '/yalla_blogger_theme.xml'
+      };
+      
+      const fullUrl = window.location.origin + urls[type];
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        alert(currentLang === 'ar' ? 'تم نسخ رابط الخلاصة بنجاح!' : 'Feed link copied successfully!');
+      });
+    }
+
+    function copyPreviewedCode() {
+      if (!currentPreviewedText) return;
+      navigator.clipboard.writeText(currentPreviewedText).then(() => {
+        alert(currentLang === 'ar' ? 'تم نسخ كود الخلاصة البرمجي بالكامل!' : 'Code copied to clipboard successfully!');
+      });
+    }
+
+    // Scrape live action
+    async function triggerScrape() {
+      const syncBtn = document.getElementById('btn-sync');
+      const syncText = document.getElementById('lbl-sync-text');
+      const loader = syncBtn.querySelector('.loader-container');
+      const modal = document.getElementById('console-modal');
+      const terminal = document.getElementById('terminal-output');
+      const dict = i18n[currentLang];
+      
+      // Disable buttons
+      syncBtn.disabled = true;
+      loader.style.display = 'inline-block';
+      syncText.innerText = dict.loading;
+      
+      // Show terminal log overlay
+      modal.style.display = 'flex';
+      terminal.innerText = 'Scraping TV-Yalla website live...\nSetting up User-Agent and connection protocols...\n';
+      
+      try {
+        const res = await fetch('/api/scrape');
+        const json = await res.json();
+        
+        terminal.innerText += '\n' + (json.console || 'No logs returned.');
+        
+        if (json.success) {
+          terminal.innerText += `\n\n[SUCCESS] Feed Sync Completed! Found ${json.data.matches.length} matches and ${json.data.news.length} articles.`;
+          terminal.style.color = '#00e676';
+          
+          // Reload dashboard data
+          await loadData(false);
+        } else {
+          terminal.innerText += `\n\n[ERROR] Scraping failed: ${json.error}`;
+          terminal.style.color = '#ff1744';
+        }
+      } catch (err) {
+        terminal.innerText += `\n\n[FATAL ERROR] API connection failed: ${err.message}`;
+        terminal.style.color = '#ff1744';
+      } finally {
+        syncBtn.disabled = false;
+        loader.style.display = 'none';
+        syncText.innerText = dict.syncText;
+      }
+    }
+
+    function closeConsole() {
+      document.getElementById('console-modal').style.display = 'none';
+    }
+
+    // Init
+    updateUiTranslations();
+    loadData(true);
+  </script>
+</body>
+</html>

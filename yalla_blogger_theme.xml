@@ -1,0 +1,1082 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultmessages='false' b:layoutsVersion='3' b:responsive='true' dir='ltr' lang='en' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+    <title><data:blog.pageName/> - <data:blog.title/></title>
+  <b:else/>
+    <title><data:blog.pageTitle/></title>
+  </b:if>
+
+  <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&amp;display=swap' rel='stylesheet'/>
+
+  <!-- Blogger Skin & Premium CSS Styling (Enhanced Light Edition) -->
+  <b:skin><![CDATA[
+    /*------------------------------------------------------------
+    Theme Name: AlbaYalla Premium Light Blogger Theme
+    Theme URI: https://www.tv-yalla.live/
+    Author: Antigravity AI
+    License: Creative Commons Attribution 3.0
+    ------------------------------------------------------------*/
+    
+    /* Core Variables */
+    :root {
+      --bg-dark: #f4f6fa;
+      --bg-match: #ffffff;
+      --main-color: #4d0b7a; /* Royal Yalla Purple */
+      --accent-color: #00b4d8; /* Aqua Accent */
+      --text-white: #1a1e29; /* Primary Text */
+      --text-gray: #5f667d; /* Secondary Text */
+      --panel-border: rgba(0, 0, 0, 0.06);
+      --success: #1b5e20;
+      --danger: #b71c1c;
+      --rounded: 10px;
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset & Core Styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(77, 11, 122, 0.04) 0px, transparent 40%),
+        radial-gradient(at 100% 0%, rgba(0, 180, 216, 0.04) 0px, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-white);
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    a {
+      color: var(--text-white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header Styling */
+    #header-wrapper {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--main-color);
+      box-shadow: 0 4px 20px rgba(77, 11, 122, 0.03), 0 1px 4px rgba(0, 0, 0, 0.01);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--main-color);
+      padding: 8px 20px;
+      border-radius: var(--rounded);
+      box-shadow: 0 4px 12px rgba(77, 11, 122, 0.2);
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo span {
+      font-size: 11px;
+      color: var(--accent-color);
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .main-navigation {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    .main-navigation li a {
+      font-size: 16px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: var(--rounded);
+      color: var(--text-white);
+    }
+
+    .main-navigation li a:hover,
+    .main-navigation li.active a {
+      background: var(--main-color);
+      color: #fff;
+    }
+
+    /* Home Page Matches Layout */
+    .matches-section-title {
+      margin: 25px 0 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .matches-section-title h2 {
+      font-size: 18px;
+      font-weight: 800;
+      background: var(--main-color);
+      color: #ffffff;
+      padding: 6px 15px;
+      border-radius: var(--rounded);
+      border-left: 4px solid var(--accent-color);
+      box-shadow: 0 4px 10px rgba(77, 11, 122, 0.15);
+    }
+
+    .time-badge {
+      font-size: 12px;
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      color: var(--primary);
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    }
+
+    /* Match Table Grid */
+    .matches-table-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    /* Match Card Aesthetics */
+    .blogger-match-card {
+      background: var(--bg-match);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--rounded);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.01);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .blogger-match-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(77, 11, 122, 0.15);
+      box-shadow: 0 8px 24px rgba(77, 11, 122, 0.05);
+    }
+
+    .blogger-match-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .blogger-team {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex: 1;
+    }
+
+    .blogger-team.team-home {
+      justify-content: flex-start;
+    }
+
+    .blogger-team.team-away {
+      justify-content: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .blogger-team-logo {
+      width: 48px;
+      height: 48px;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      object-fit: contain;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    .blogger-team-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-white);
+    }
+
+    .blogger-match-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 0 15px;
+      min-width: 140px;
+    }
+
+    .blogger-match-time {
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(77, 11, 122, 0.05);
+      padding: 3px 10px;
+      border-radius: 6px;
+      color: var(--primary);
+      border: 1px solid rgba(77, 11, 122, 0.1);
+    }
+
+    .blogger-match-score {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: 2px;
+    }
+
+    .blogger-match-status {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .blogger-match-status.not-started {
+      background: rgba(0, 180, 216, 0.08);
+      color: #0077b6;
+      border: 1px solid rgba(0, 180, 216, 0.2);
+    }
+
+    .blogger-match-status.live {
+      background: rgba(183, 28, 28, 0.08);
+      color: var(--danger);
+      border: 1px solid rgba(183, 28, 28, 0.2);
+      animation: blink 1.2s infinite;
+    }
+
+    .blogger-match-status.ended {
+      background: #f1f3f7;
+      color: var(--text-gray);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.5; }
+    }
+
+    /* Match Info Details Bar */
+    .blogger-match-info-bar {
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      margin-top: 12px;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 12px;
+      color: var(--text-gray);
+      background: #f8fafc;
+      border-radius: 6px;
+      padding: 6px 10px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    /* Main Grid Layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 800px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+      .blogger-match-inner {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .blogger-team {
+        width: 100%;
+        justify-content: center !important;
+        flex-direction: row !important;
+      }
+    }
+
+    /* Blog News Cards Grid */
+    .news-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .news-post-card {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--rounded);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .news-post-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(77, 11, 122, 0.15);
+      box-shadow: 0 8px 24px rgba(77, 11, 122, 0.05);
+    }
+
+    .news-post-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    .news-post-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 15px;
+    }
+
+    .news-post-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-white);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .news-post-meta {
+      font-size: 11px;
+      color: var(--text-gray);
+      display: flex;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    /* Sidebar Widgets */
+    .sidebar-widget {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--rounded);
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .widget-title {
+      font-size: 16px;
+      font-weight: 800;
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .sidebar-links {
+      list-style: none;
+    }
+
+    .sidebar-links li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .sidebar-links li:last-child {
+      border: none;
+    }
+
+    /* Single Post & Stream Page */
+    .single-post-card {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--rounded);
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .single-post-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--panel-border);
+      padding-bottom: 15px;
+      color: var(--primary);
+    }
+
+    .post-body-content {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #2d3748;
+    }
+
+    /* HTML5 Stream Player Container */
+    .stream-player-container {
+      background: #000;
+      border-radius: var(--rounded);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      margin: 20px 0;
+      position: relative;
+      border: 1px solid var(--panel-border);
+    }
+
+    .server-switching-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .server-tab {
+      background: #f1f3f7;
+      padding: 6px 15px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      color: var(--text-white);
+      transition: var(--transition);
+    }
+
+    .server-tab.active {
+      background: var(--main-color);
+      border-color: var(--main-color);
+      color: #fff;
+    }
+
+    /* Footer Styling */
+    #footer-wrapper {
+      background: #fafbfc;
+      border-top: 1px solid var(--panel-border);
+      padding: 40px 0 20px;
+      text-align: center;
+      color: var(--text-gray);
+      margin-top: 50px;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 20px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .footer-links li a {
+      color: var(--primary);
+    }
+
+    .footer-links li a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Pagination */
+    .blog-pagination {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .blog-pagination a {
+      background: #ffffff;
+      padding: 8px 18px;
+      border-radius: var(--rounded);
+      font-weight: 700;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      color: var(--text-white);
+    }
+
+    .blog-pagination a:hover {
+      background: var(--main-color);
+      color: #fff;
+    }
+
+    /* ==========================================
+       Premium Blogger Widgets Styling
+       ========================================== */
+
+    /* 🔍 Custom Blogger Search Widget */
+    .widget.BlogSearch {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--rounded);
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .widget.BlogSearch h2.title {
+      font-size: 16px;
+      font-weight: 800;
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    .widget.BlogSearch form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .widget.BlogSearch .search-input {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #f8fafc;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-white);
+      transition: var(--transition);
+      outline: none;
+    }
+    .widget.BlogSearch .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(77, 11, 122, 0.1);
+      background: #ffffff;
+    }
+    .widget.BlogSearch .search-action {
+      width: 100%;
+      background: var(--main-color);
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .widget.BlogSearch .search-action:hover {
+      background: var(--accent-color);
+      box-shadow: 0 4px 10px rgba(0, 180, 216, 0.2);
+    }
+
+    /* 👤 Custom Blogger Profile Widget (About Me) */
+    .widget.Profile {
+      background: #ffffff;
+      border: 1px solid var(--panel-border);
+      border-radius: var(--rounded);
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      text-align: center;
+    }
+    .widget.Profile h2.title {
+      font-size: 16px;
+      font-weight: 800;
+      border-bottom: 2px solid var(--main-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      color: var(--primary);
+      text-align: left;
+    }
+    .widget.Profile .profile-avatar {
+      margin: 15px auto;
+      display: block;
+    }
+    .widget.Profile .profile-avatar img {
+      width: 85px;
+      height: 85px;
+      border-radius: 50%;
+      border: 3px solid var(--main-color);
+      padding: 3px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(77, 11, 122, 0.15);
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .widget.Profile .profile-avatar img:hover {
+      transform: scale(1.05);
+      border-color: var(--accent-color);
+    }
+    .widget.Profile .profile-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .widget.Profile .profile-data {
+      font-size: 12px;
+      color: var(--text-gray);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .widget.Profile .profile-textblock {
+      font-size: 13px;
+      color: var(--text-gray);
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+    .widget.Profile a.profile-link {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--main-color), #6714a1);
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(77, 11, 122, 0.15);
+    }
+    .widget.Profile a.profile-link:hover {
+      background: var(--accent-color);
+      box-shadow: 0 4px 12px rgba(0, 180, 216, 0.25);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* 🚫 Hide Default Blogger Attribution, Abuse frame, and ugly layouts */
+    .widget.Attribution, 
+    #Attribution1, 
+    .report_abuse,
+    .report_abuse_link {
+      display: none !important;
+    }
+  ]]></b:skin>
+
+  <!-- Premium Layout Editor Styling -->
+  <b:template-skin>
+    <![CDATA[
+      body#layout {
+        background-color: #f4f6fa;
+        font-family: 'Cairo', sans-serif;
+      }
+      body#layout .section {
+        border: 2px dashed rgba(77, 11, 122, 0.2) !important;
+        background: #ffffff !important;
+        border-radius: 8px !important;
+        padding: 15px !important;
+        margin-bottom: 20px !important;
+      }
+      body#layout .widget {
+        background: #ffffff !important;
+        border: 1px solid rgba(77, 11, 122, 0.1) !important;
+        border-radius: 6px !important;
+        padding: 10px !important;
+        margin-bottom: 10px !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.02) !important;
+      }
+      body#layout .widget-title {
+        color: #4d0b7a !important;
+        font-weight: bold !important;
+      }
+    ]]>
+  </b:template-skin>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div id='header-wrapper'>
+    <div class='container header-inner'>
+      <b:section class='header-title-section' id='header-title-section' maxwidgets='1' showaddelement='no'>
+        <b:widget id='Header1' locked='true' title='Title and Logo' type='Header'>
+          <b:includable id='main'>
+            <a expr:href='data:blog.homepageUrl' class='logo'>
+              <h1><data:title/></h1>
+              <span>YALLA LIVE NEWS &amp; STREAMING</span>
+            </a>
+          </b:includable>
+        </b:widget>
+      </b:section>
+
+      <!-- Navigation Menu -->
+      <ul class='main-navigation'>
+        <li class='active'><a expr:href='data:blog.homepageUrl'>Home</a></li>
+        <li><a expr:href='data:blog.homepageUrl + &quot;search/label/Match&quot;'>Match Schedule</a></li>
+        <li><a expr:href='data:blog.homepageUrl + &quot;search/label/News&quot;'>Sports News</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class='container'>
+    
+    <!-- Match Schedule Table Widget (Visible on Homepage only) -->
+    <b:if cond='data:blog.url == data:blog.homepageUrl'>
+      <div class='matches-section-title'>
+        <h2>Today's Matches</h2>
+        <span class='time-badge'>Riyadh Time (UTC+3)</span>
+      </div>
+
+      <!-- Dynamic / Mock Match Grid -->
+      <div class='matches-table-grid' id='blogger-matches-grid'>
+        <!-- Scrape injection placeholder or Mock schedule fallback -->
+        <div class='blogger-match-card' onclick='window.location.href=&quot;#&quot;'>
+          <div class='blogger-match-inner'>
+            <div class='blogger-team team-home'>
+              <img class='blogger-team-logo' src='https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6415597.png' alt='Morocco'/>
+              <span class='blogger-team-name'>Morocco</span>
+            </div>
+            <div class='blogger-match-center'>
+              <span class='blogger-match-time'>07:00 PM</span>
+              <span class='blogger-match-score'>0 - 0</span>
+              <span class='blogger-match-status live'>LIVE NOW</span>
+            </div>
+            <div class='blogger-team team-away'>
+              <img class='blogger-team-logo' src='https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6423320.png' alt='Burundi'/>
+              <span class='blogger-team-name'>Burundi</span>
+            </div>
+          </div>
+          <div class='blogger-match-info-bar'>
+            <div class='info-item'>📺 beIN Sports 1</div>
+            <div class='info-item'>🎤 Jawad Badda</div>
+            <div class='info-item'>🏆 Friendly Match</div>
+          </div>
+        </div>
+
+        <div class='blogger-match-card' onclick='window.location.href=&quot;#&quot;'>
+          <div class='blogger-match-inner'>
+            <div class='blogger-team team-home'>
+              <img class='blogger-team-logo' src='https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a61b2276.png' alt='Saint-Étienne'/>
+              <span class='blogger-team-name'>Saint-Étienne</span>
+            </div>
+            <div class='blogger-match-center'>
+              <span class='blogger-match-time'>09:45 PM</span>
+              <span class='blogger-match-score'>0 - 0</span>
+              <span class='blogger-match-status not-started'>Not Started</span>
+            </div>
+            <div class='blogger-team team-away'>
+              <img class='blogger-team-logo' src='https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a61bcded.png' alt='Nice'/>
+              <span class='blogger-team-name'>Nice</span>
+            </div>
+          </div>
+          <div class='blogger-match-info-bar'>
+            <div class='info-item'>📺 beIN Sports 2</div>
+            <div class='info-item'>🎤 Nawfal Bashi</div>
+            <div class='info-item'>🏆 Ligue 1</div>
+          </div>
+        </div>
+      </div>
+    </b:if>
+
+    <!-- Main Grid: Main Blog Posts & Sidebar -->
+    <div class='main-grid'>
+      
+      <!-- Left Area: Posts Column -->
+      <div class='posts-column'>
+        <b:section class='main' id='main' showaddelement='yes'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'>
+            <b:includable id='main' var='top'>
+              
+              <!-- Check if Single Post Page -->
+              <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                <b:loop values='data:posts' var='post'>
+                  <div class='single-post-card'>
+                    <h1 class='single-post-title'><data:post.title/></h1>
+                    
+                    <!-- If labelled as Match, show stream servers -->
+                    <b:loop values='data:post.labels' var='label'>
+                      <b:if cond='data:label.name == &quot;Match&quot;'>
+                        <div class='server-switching-tabs'>
+                          <span class='server-tab active' onclick='changeServer(&quot;1&quot;)'>Stream Server 1</span>
+                          <span class='server-tab' onclick='changeServer(&quot;2&quot;)'>Stream Server 2</span>
+                          <span class='server-tab' onclick='changeServer(&quot;3&quot;)'>Multi-Quality Stream</span>
+                        </div>
+                        <div class='stream-player-container'>
+                          <iframe id='yalla-player' src='about:blank' width='100%' height='100%' frameborder='0' scrolling='no' allowfullscreen='true' style='position:absolute; top:0; left:0;'></iframe>
+                        </div>
+                      </b:if>
+                    </b:loop>
+
+                    <div class='post-body-content'>
+                      <data:post.body/>
+                    </div>
+                  </div>
+                </b:loop>
+
+              <!-- Homepage/Label Grid list of posts -->
+              <b:else/>
+                <div class='news-cards-grid'>
+                  <b:loop values='data:posts' var='post'>
+                    <div class='news-post-card'>
+                      <b:if cond='data:post.thumbnailUrl'>
+                        <img class='news-post-image' expr:src='data:post.thumbnailUrl' expr:alt='data:post.title'/>
+                      <b:else/>
+                        <div class='news-post-image' style='display:flex; align-items:center; justify-content:center; background:#f1f3f7; color:var(--primary); font-size:36px;'>⚽</div>
+                      </b:if>
+                      
+                      <div class='news-post-content'>
+                        <h3 class='news-post-title'>
+                          <a expr:href='data:post.url'><data:post.title/></a>
+                        </h3>
+                        <div class='news-post-meta'>
+                          <span>📅 <data:post.dateHeader/></span>
+                          <span>✍️ <data:post.author/></span>
+                        </div>
+                        <a expr:href='data:post.url' style='font-size:12px; color:var(--accent-color); font-weight:700;'>Watch Stream &amp; Details ←</a>
+                      </div>
+                    </div>
+                  </b:loop>
+                </div>
+
+                <!-- Pagination navigation -->
+                <div class='blog-pagination'>
+                  <b:if cond='data:newerPageUrl'>
+                    <a expr:href='data:newerPageUrl' class='newer-posts'>Newer Posts</a>
+                  </b:if>
+                  <b:if cond='data:olderPageUrl'>
+                    <a expr:href='data:olderPageUrl' class='older-posts'>Older Posts</a>
+                  </b:if>
+                </div>
+              </b:if>
+
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </div>
+
+      <!-- Right Area: Sidebar Widget Column -->
+      <div class='sidebar-column'>
+        <b:section class='sidebar' id='sidebar' showaddelement='yes'>
+          
+          <!-- 🔍 Custom Styled Blogger Search Widget -->
+          <b:widget id='BlogSearch1' locked='false' title='Search This Blog' type='BlogSearch'>
+            <b:includable id='main'>
+              <div class='sidebar-widget widget BlogSearch'>
+                <h3 class='widget-title'><data:title/></h3>
+                <div class='widget-content'>
+                  <form expr:action='data:blog.searchUrl' method='get'>
+                    <input class='search-input' name='q' placeholder='Search this blog...' type='text' autocomplete='off'/>
+                    <button class='search-action' type='submit'>Search</button>
+                  </form>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+
+          <!-- 👤 Custom Styled Blogger Profile Widget (About Me / Avatar Card) -->
+          <b:widget id='Profile1' locked='false' title='About Me' type='Profile'>
+            <b:includable id='main'>
+              <div class='sidebar-widget widget Profile'>
+                <h3 class='widget-title'><data:title/></h3>
+                <div class='widget-content'>
+                  <b:if cond='data:team == &quot;true&quot;'>
+                    <!-- Team profile list -->
+                    <ul class='profile-team-list'>
+                      <b:loop values='data:authors' var='i'>
+                        <li>
+                          <a expr:href='data:i.userUrl' target='_blank'><data:i.display-name/></a>
+                        </li>
+                      </b:loop>
+                    </ul>
+                  <b:else/>
+                    <!-- Single author profile card -->
+                    <div class='profile-avatar'>
+                      <b:if cond='data:photo.url != &quot;&quot;'>
+                        <img expr:src='data:photo.url' width='85' height='85' alt='Avatar'/>
+                      <b:else/>
+                        <!-- Fallback glowing custom avatar icon -->
+                        <div style='width:85px; height:85px; border-radius:50%; background:var(--main-color); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto; font-size:36px; box-shadow: 0 4px 12px rgba(77, 11, 122, 0.15); font-weight:bold;'>👤</div>
+                      </b:if>
+                    </div>
+                    <div class='profile-name'><data:displayname/></div>
+                    <div class='profile-data'>Blogger Administrator</div>
+                    <b:if cond='data:showlocation == &quot;true&quot;'>
+                      <div class='profile-location' style='font-size:12px; color:var(--text-gray); margin-bottom:10px;'>📍 <data:location/></div>
+                    </b:if>
+                    <div class='profile-textblock'><data:introduction/></div>
+                    <a class='profile-link' expr:href='data:userUrl' target='_blank'>View complete profile</a>
+                  </b:if>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+
+          <!-- Social & Description Widget -->
+          <b:widget id='HTML1' locked='false' title='About Us' type='HTML'>
+            <b:includable id='main'>
+              <div class='sidebar-widget'>
+                <h3 class='widget-title'><data:title/></h3>
+                <p style='font-size: 13px; color: var(--text-gray);'><data:content/></p>
+              </div>
+            </b:includable>
+          </b:widget>
+
+          <!-- Streaming Channel links -->
+          <b:widget id='LinkList1' locked='false' title='Favorite Channels' type='LinkList'>
+            <b:includable id='main'>
+              <div class='sidebar-widget'>
+                <h3 class='widget-title'><data:title/></h3>
+                <ul class='sidebar-links'>
+                  <b:loop values='data:links' var='link'>
+                    <li><a expr:href='data:link.target'><data:link.name/></a></li>
+                  </b:loop>
+                </ul>
+              </div>
+            </b:includable>
+          </b:widget>
+
+        </b:section>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer Wrapper -->
+  <div id='footer-wrapper'>
+    <div class='container'>
+      <ul class='footer-links'>
+        <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+        <li><a expr:href='data:blog.homepageUrl'>About Us</a></li>
+        <li><a expr:href='data:blog.homepageUrl'>Contact Us</a></li>
+        <li><a expr:href='data:blog.homepageUrl'>Privacy Policy</a></li>
+      </ul>
+      <p>© All Rights Reserved to <span id='footer-blog-title'><data:blog.title/></span> - <script>document.write(new Date().getFullYear())</script></p>
+      <p style='font-size:11px; margin-top:5px; color:var(--text-gray);'>Blogger XML Theme Developed &amp; Designed by Antigravity AI Engine</p>
+    </div>
+  </div>
+
+  <!-- Client-side script actions (Server-switching and dynamic schedule fetcher) -->
+  <script type='text/javascript'>
+    // Change live streaming player server src
+    function changeServer(id) {
+      const player = document.getElementById('yalla-player');
+      const tabs = document.querySelectorAll('.server-tab');
+      
+      // Update active tab style
+      tabs.forEach((tab, index) => {
+        if (index === (parseInt(id) - 1)) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      // Attempt to load custom stream URLs defined inside the Blogger post content
+      const customServers = document.getElementById('stream-servers');
+      let server1 = "https://www.tv-yalla.live/home/"; // Fallback
+      let server2 = "https://www.tv-yalla.live/matches-today/"; // Fallback
+      let server3 = "https://www.youtube.com/embed/live_stream"; // Fallback
+
+      if (customServers) {
+        server1 = customServers.getAttribute('data-server1') || server1;
+        server2 = customServers.getAttribute('data-server2') || server2;
+        server3 = customServers.getAttribute('data-server3') || server3;
+      }
+
+      const servers = {
+        "1": server1,
+        "2": server2,
+        "3": server3
+      };
+      
+      if (player) {
+        player.src = servers[id] || "about:blank";
+      }
+    }
+
+    // Optional dynamic integration: Attempt to load live matches if available on same local network
+    async function loadLiveMatchesFromFeedCenter() {
+      const grid = document.getElementById('blogger-matches-grid');
+      if (!grid) return;
+
+      try {
+        // Look up on standard feed center server hosting
+        const res = await fetch('http://localhost:3000/api/data');
+        const json = await res.json();
+        
+        if (json.success &amp;&amp; json.data.matches.length &gt; 0) {
+          let html = '';
+          json.data.matches.forEach(m =&gt; {
+            const statusClass = m.statusClass === 'live' ? 'live' : (m.statusClass === 'finished' ? 'ended' : 'not-started');
+            let statusText = 'Not Started';
+            if (m.statusClass === 'live') statusText = 'LIVE NOW 📡';
+            if (m.statusClass === 'finished') statusText = 'Ended';
+            if (m.statusText &amp;&amp; m.statusText !== 'لم تبدأ بعد' &amp;&amp; m.statusText !== 'انتهت' &amp;&amp; m.statusText !== 'not-started') {
+              statusText = m.statusText;
+            }
+
+            // Translate dynamic status from scraper
+            if (statusText === 'لم تبدأ بعد') statusText = 'Not Started';
+            if (statusText === 'انتهت') statusText = 'Ended';
+
+            html += `
+              <div class="blogger-match-card" onclick="window.open('${m.link}', '_blank')">
+                <div class="blogger-match-inner">
+                  <div class="blogger-team team-home">
+                    <img class="blogger-team-logo" src="${m.team1.logo || 'https://www.tv-yalla.live/wp-content/uploads/2026/05/cropped-%D9%84%D9%86%D8%AB%D8%B5%D9%84%D8%AB-32x32.png'}" alt="${m.team1.name}"/>
+                    <span class="blogger-team-name">${m.team1.name}</span>
+                  </div>
+                  <div class="blogger-match-center">
+                    <span class="blogger-match-time">${m.time}</span>
+                    <span class="blogger-match-score">${m.score}</span>
+                    <span class="blogger-match-status ${statusClass}">${statusText}</span>
+                  </div>
+                  <div class="blogger-team team-away">
+                    <img class="blogger-team-logo" src="${m.team2.logo || 'https://www.tv-yalla.live/wp-content/uploads/2026/05/cropped-%D9%84%D9%86%D8%AB%D8%B5%D9%84%D8%AB-32x32.png'}" alt="${m.team2.name}"/>
+                    <span class="blogger-team-name">${m.team2.name}</span>
+                  </div>
+                </div>
+                <div class="blogger-match-info-bar">
+                  <div class="info-item">📺 ${m.channel}</div>
+                  <div class="info-item">🎤 ${m.commentator}</div>
+                  <div class="info-item">🏆 ${m.tournament}</div>
+                </div>
+              </div>
+            `;
+          });
+          grid.innerHTML = html;
+        }
+      } catch (err) {
+        console.log("Local Feed Center offline or blocked by CORS. Using Blogger theme mock data matches instead.");
+      }
+    }
+
+    // Run dynamic feed injection on window load
+    window.addEventListener('load', () => {
+      loadLiveMatchesFromFeedCenter();
+      changeServer("1"); // Load first player
+    });
+  </script>
+</body>
+</html>
