@@ -1,65 +1,46 @@
 {
   "matches": [
     {
-      "id": "morocco-vs-burundi",
-      "statusClass": "not-started",
-      "title": "مشاهدة مباراة Morocco و Burundi بث مباشر yalla live",
-      "link": "https://www.tv-yalla.live/matches/morocco-vs-burundi/",
-      "time": "07:00 PM",
-      "score": "0",
-      "statusText": "Not Started",
+      "id": "india_vs_jamaica",
+      "title": "India vs Jamaica",
+      "link": "https://epic.djsofficial.com/2026/05/jam-ind.html",
+      "time": "12:00 AM",
+      "score": "vs",
+      "statusClass": "finished",
+      "statusText": "Ended",
       "team1": {
-        "name": "Morocco",
-        "logo": "https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6415597.png"
+        "name": "India",
+        "logo": "https://cdn.jsdelivr.net/gh/rsmouk/teams@main/flag_india.png"
       },
       "team2": {
-        "name": "Burundi",
-        "logo": "https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6423320.png"
+        "name": "Jamaica",
+        "logo": "https://images.fotmob.com/image_resources/logo/teamlogo/5806_small.png"
       },
-      "channel": "Unknown",
-      "commentator": "Unknown",
-      "tournament": "Friendly Match"
-    },
-    {
-      "id": "nigeria-vs-zimbabwe",
-      "statusClass": "not-started",
-      "title": "مشاهدة مباراة Nigeria و Zimbabwe بث مباشر yalla live",
-      "link": "https://www.tv-yalla.live/matches/nigeria-vs-zimbabwe/",
-      "time": "09:30 PM",
-      "score": "0",
-      "statusText": "Not Started",
-      "team1": {
-        "name": "Nigeria",
-        "logo": "https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6561d81.png"
-      },
-      "team2": {
-        "name": "Zimbabwe",
-        "logo": "https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a65d845d.png"
-      },
-      "channel": "Unknown",
-      "commentator": "Unknown",
-      "tournament": "Friendly Match"
-    },
-    {
-      "id": "as-saint-etienne-vs-nice",
-      "statusClass": "not-started",
-      "title": "مشاهدة مباراة Saint-Étienne و Nice بث مباشر yalla live",
-      "link": "https://www.tv-yalla.live/matches/as-saint-etienne-vs-nice/",
-      "time": "09:45 PM",
-      "score": "0",
-      "statusText": "Not Started",
-      "team1": {
-        "name": "Saint-Étienne",
-        "logo": "https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a61b2276.png"
-      },
-      "team2": {
-        "name": "Nice",
-        "logo": "https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a61bcded.png"
-      },
-      "channel": "beIN Sports 2",
-      "commentator": "Nawfal Bashi",
-      "tournament": "Ligue 1"
+      "commentator": "NA",
+      "channel": "Epicsports",
+      "tournament": "Friendly"
     }
   ],
-  "news": []
+  "news": [
+    {
+      "title": "Madonna, Shakira and BTS to Headline Historic FIFA World Cup 2026 Final Halftime Show",
+      "link": "https://www.epicsports.in/2026/05/madonna-shakira-and-bts-to-headline.html",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4SNnWVtTz1qxx3UDq2OSJ8objIJByFNJl45p_av_eGBy7_vwX5EqBoSdkYGrWk879YGl4V_zwYfDYULO7vXhAK-KlJNWvPyAOj_gNL7duoHoM4IVju1gI5w5QgeFBrX8qZPhTm6wRAk009fvBtwdeVVx94TdO09S2GqqFc6DFgrGO3NdtmLCFJ2z5xGr/s400/3_epicsportsnews.jpg"
+    },
+    {
+      "title": "Gianni Infantino Responds to $2.3 Million 2026 FIFA World Cup Final Ticket Resale Shock",
+      "link": "https://www.epicsports.in/2026/05/gianni-infantino-responds-to-23-million.html",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQ-wEVKVO08dHshy6LPTOi98TNmaP7UaYztOG1J4IhYx812alEqnvZ64PHPcXbry9yt7wrl4F3V_nkDNCEB9fN4q59RII-AVPlbETdgYcf_sjv2U31U1eMbn8NLCXjJfNZlOI2M2_Ha-8Hzz5hx8TUENvPQJ2P7mFRXHdr0LKevBDKWRpUR2Mk5DaoGkvs/w400-h400/1_epicsportsnews.jpg"
+    },
+    {
+      "title": "Arsenal’s Champions League Transformation Under Mikel Arteta: From Round of 16 Struggles to European Contenders",
+      "link": "https://www.epicsports.in/2026/05/arsenals-champions-league.html",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNELzUzx9wjZmbsGw46elDMnvr78i9Gg5VucpKzohB_mS4jslKdkyhHAELZEpxJ4DlzFNSyWXdpa0KYxyc3klL1Utnd__2V9-hSCRSpWKRxNnkxekmI_0GDTGEbR1Q7_mYVltDuJ3C0edfMFYScbFPbUHra60ddiFD95gnk6n6hUpwjcNqf9MGw1nR1fX2/w390-h400/Arsenal_1.jpg"
+    },
+    {
+      "title": "João Cancelo Makes Football History: First Player Ever to Win League Titles in 4 of Europe’s Top 5 Leagues",
+      "link": "https://www.epicsports.in/2026/05/joao-cancelo-makes-football-history.html",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjr1uTLkgA4C6ItGbF5IwWHu77JuxAhmOgrC4HGoV-ow8DEWmIoVW5mmF_zpzx3wS04aVknWoiHVv_B-UtxNMFTr31aUiQWSKtk8kFDfDdy0H121AIYcE7aQhwqAGok5XtE-NyuxmFwA81_Lvulez6AjpxWAF2-gfaAlzefSEJcXAAr5MWRUwxJ1N2Km4gC/s400/cancelo.jpg"
+    }
+  ]
 }

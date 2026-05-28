@@ -1,61 +1,45 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>يلا لايف - بث مباشر مباريات اليوم</title>
-    <link>https://www.tv-yalla.live/home/</link>
-    <description>يلا لايف yalla live مشاهدة مباريات اليوم بث مباشر بدون تقطيع yalla tv live موقع يلا لايف مباريات اليوم</description>
-    <language>ar</language>
-    <lastBuildDate>Tue, 26 May 2026 10:57:23 GMT</lastBuildDate>
+    <title>Yalla Sports - Live Matches &amp; News</title>
+    <link>https://www.epicsports.in/</link>
+    <description>Live sports matches, scores, and latest sports news from Epicsports</description>
+    <language>en</language>
+    <lastBuildDate>Thu, 28 May 2026 16:43:53 GMT</lastBuildDate>
     <item>
-      <title>مباراة: Morocco × Burundi (07:00 PM)</title>
-      <link>https://www.tv-yalla.live/matches/morocco-vs-burundi/</link>
-      <description><![CDATA[
-        <div dir="rtl" style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-          <h3>⚽ Morocco ضد Burundi</h3>
-          <p><strong>⏰ توقيت المباراة:</strong> 07:00 PM (بتوقيت الرياض)</p>
-          <p><strong>🏆 البطولة:</strong> Friendly Match</p>
-          <p><strong>📺 القناة الناقلة:</strong> Unknown</p>
-          <p><strong>🎤 المعلق الرياضي:</strong> Unknown</p>
-          <p><strong>⚡ حالة المباراة:</strong> Not Started (0)</p>
-          <p><a href="https://www.tv-yalla.live/matches/morocco-vs-burundi/" style="display: inline-block; padding: 8px 15px; background: #4d0b7a; color: white; text-decoration: none; border-radius: 4px;">مشاهدة البث المباشر 🎥</a></p>
-        </div>
-      ]]></description>
+      <title>India vs Jamaica — 12:00 AM</title>
+      <link>https://epic.djsofficial.com/2026/05/jam-ind.html</link>
+      <description><![CDATA[<b>⚽ India vs Jamaica</b><br/>🕐 Time: 12:00 AM<br/>🏆 Friendly<br/>📺 Epicsports<br/>🎤 NA<br/>⚡ Status: Ended — Score: vs]]></description>
+      <guid>india_vs_jamaica</guid>
       <category>Matches</category>
-      <guid>morocco-vs-burundi</guid>
     </item>
     <item>
-      <title>مباراة: Nigeria × Zimbabwe (09:30 PM)</title>
-      <link>https://www.tv-yalla.live/matches/nigeria-vs-zimbabwe/</link>
-      <description><![CDATA[
-        <div dir="rtl" style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-          <h3>⚽ Nigeria ضد Zimbabwe</h3>
-          <p><strong>⏰ توقيت المباراة:</strong> 09:30 PM (بتوقيت الرياض)</p>
-          <p><strong>🏆 البطولة:</strong> Friendly Match</p>
-          <p><strong>📺 القناة الناقلة:</strong> Unknown</p>
-          <p><strong>🎤 المعلق الرياضي:</strong> Unknown</p>
-          <p><strong>⚡ حالة المباراة:</strong> Not Started (0)</p>
-          <p><a href="https://www.tv-yalla.live/matches/nigeria-vs-zimbabwe/" style="display: inline-block; padding: 8px 15px; background: #4d0b7a; color: white; text-decoration: none; border-radius: 4px;">مشاهدة البث المباشر 🎥</a></p>
-        </div>
-      ]]></description>
-      <category>Matches</category>
-      <guid>nigeria-vs-zimbabwe</guid>
+      <title>Madonna, Shakira and BTS to Headline Historic FIFA World Cup 2026 Final Halftime Show</title>
+      <link>https://www.epicsports.in/2026/05/madonna-shakira-and-bts-to-headline.html</link>
+      <description><![CDATA[<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV4SNnWVtTz1qxx3UDq2OSJ8objIJByFNJl45p_av_eGBy7_vwX5EqBoSdkYGrWk879YGl4V_zwYfDYULO7vXhAK-KlJNWvPyAOj_gNL7duoHoM4IVju1gI5w5QgeFBrX8qZPhTm6wRAk009fvBtwdeVVx94TdO09S2GqqFc6DFgrGO3NdtmLCFJ2z5xGr/s400/3_epicsportsnews.jpg" alt="Madonna, Shakira and BTS to Headline Historic FIFA World Cup 2026 Final Halftime Show" style="max-width:100%"/><br/><p>Madonna, Shakira and BTS to Headline Historic FIFA World Cup 2026 Final Halftime Show</p>]]></description>
+      <guid>news_0_1779986633607</guid>
+      <category>News</category>
     </item>
     <item>
-      <title>مباراة: Saint-Étienne × Nice (09:45 PM)</title>
-      <link>https://www.tv-yalla.live/matches/as-saint-etienne-vs-nice/</link>
-      <description><![CDATA[
-        <div dir="rtl" style="font-family: Arial, sans-serif; padding: 10px; border: 1px solid #ddd; border-radius: 8px;">
-          <h3>⚽ Saint-Étienne ضد Nice</h3>
-          <p><strong>⏰ توقيت المباراة:</strong> 09:45 PM (بتوقيت الرياض)</p>
-          <p><strong>🏆 البطولة:</strong> Ligue 1</p>
-          <p><strong>📺 القناة الناقلة:</strong> beIN Sports 2</p>
-          <p><strong>🎤 المعلق الرياضي:</strong> Nawfal Bashi</p>
-          <p><strong>⚡ حالة المباراة:</strong> Not Started (0)</p>
-          <p><a href="https://www.tv-yalla.live/matches/as-saint-etienne-vs-nice/" style="display: inline-block; padding: 8px 15px; background: #4d0b7a; color: white; text-decoration: none; border-radius: 4px;">مشاهدة البث المباشر 🎥</a></p>
-        </div>
-      ]]></description>
-      <category>Matches</category>
-      <guid>as-saint-etienne-vs-nice</guid>
+      <title>Gianni Infantino Responds to $2.3 Million 2026 FIFA World Cup Final Ticket Resale Shock</title>
+      <link>https://www.epicsports.in/2026/05/gianni-infantino-responds-to-23-million.html</link>
+      <description><![CDATA[<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQ-wEVKVO08dHshy6LPTOi98TNmaP7UaYztOG1J4IhYx812alEqnvZ64PHPcXbry9yt7wrl4F3V_nkDNCEB9fN4q59RII-AVPlbETdgYcf_sjv2U31U1eMbn8NLCXjJfNZlOI2M2_Ha-8Hzz5hx8TUENvPQJ2P7mFRXHdr0LKevBDKWRpUR2Mk5DaoGkvs/w400-h400/1_epicsportsnews.jpg" alt="Gianni Infantino Responds to $2.3 Million 2026 FIFA World Cup Final Ticket Resale Shock" style="max-width:100%"/><br/><p>Gianni Infantino Responds to $2.3 Million 2026 FIFA World Cup Final Ticket Resale Shock</p>]]></description>
+      <guid>news_1_1779986633607</guid>
+      <category>News</category>
+    </item>
+    <item>
+      <title>Arsenal’s Champions League Transformation Under Mikel Arteta: From Round of 16 Struggles to European Contenders</title>
+      <link>https://www.epicsports.in/2026/05/arsenals-champions-league.html</link>
+      <description><![CDATA[<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNELzUzx9wjZmbsGw46elDMnvr78i9Gg5VucpKzohB_mS4jslKdkyhHAELZEpxJ4DlzFNSyWXdpa0KYxyc3klL1Utnd__2V9-hSCRSpWKRxNnkxekmI_0GDTGEbR1Q7_mYVltDuJ3C0edfMFYScbFPbUHra60ddiFD95gnk6n6hUpwjcNqf9MGw1nR1fX2/w390-h400/Arsenal_1.jpg" alt="Arsenal’s Champions League Transformation Under Mikel Arteta: From Round of 16 Struggles to European Contenders" style="max-width:100%"/><br/><p>Arsenal’s Champions League Transformation Under Mikel Arteta: From Round of 16 Struggles to European Contenders</p>]]></description>
+      <guid>news_2_1779986633607</guid>
+      <category>News</category>
+    </item>
+    <item>
+      <title>João Cancelo Makes Football History: First Player Ever to Win League Titles in 4 of Europe’s Top 5 Leagues</title>
+      <link>https://www.epicsports.in/2026/05/joao-cancelo-makes-football-history.html</link>
+      <description><![CDATA[<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjr1uTLkgA4C6ItGbF5IwWHu77JuxAhmOgrC4HGoV-ow8DEWmIoVW5mmF_zpzx3wS04aVknWoiHVv_B-UtxNMFTr31aUiQWSKtk8kFDfDdy0H121AIYcE7aQhwqAGok5XtE-NyuxmFwA81_Lvulez6AjpxWAF2-gfaAlzefSEJcXAAr5MWRUwxJ1N2Km4gC/s400/cancelo.jpg" alt="João Cancelo Makes Football History: First Player Ever to Win League Titles in 4 of Europe’s Top 5 Leagues" style="max-width:100%"/><br/><p>João Cancelo Makes Football History: First Player Ever to Win League Titles in 4 of Europe’s Top 5 Leagues</p>]]></description>
+      <guid>news_3_1779986633607</guid>
+      <category>News</category>
     </item>
   </channel>
 </rss>

@@ -1,40 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE tv SYSTEM "xmltv.dtd">
-<tv generator-info-name="Yalla Live XMLTV Generator" generator-info-url="https://www.tv-yalla.live/home/">
-  <channel id="morocco-vs-burundi">
-    <display-name lang="ar">Morocco ضد Burundi</display-name>
-    <display-name lang="en">morocco-vs-burundi</display-name>
-    <icon src="https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6415597.png" />
+<tv generator-info-name="Yalla Sports XMLTV" generator-info-url="https://www.epicsports.in/">
+  <channel id="india_vs_jamaica">
+    <display-name lang="en">India vs Jamaica</display-name>
+    <icon src="https://cdn.jsdelivr.net/gh/rsmouk/teams@main/flag_india.png" />
   </channel>
-  <channel id="nigeria-vs-zimbabwe">
-    <display-name lang="ar">Nigeria ضد Zimbabwe</display-name>
-    <display-name lang="en">nigeria-vs-zimbabwe</display-name>
-    <icon src="https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a6561d81.png" />
-  </channel>
-  <channel id="as-saint-etienne-vs-nice">
-    <display-name lang="ar">Saint-Étienne ضد Nice</display-name>
-    <display-name lang="en">as-saint-etienne-vs-nice</display-name>
-    <icon src="https://www.tv-yalla.live/wp-content/uploads/2026/05/alba_img_6a137a61b2276.png" />
-  </channel>
-  <programme start="20260526190000 +0300" stop="20260526205957 +0300" channel="morocco-vs-burundi">
-    <title lang="ar">Morocco ضد Burundi - بث مباشر</title>
-    <desc lang="ar">البطولة: Friendly Match | المعلق: Unknown | القناة الناقلة: Unknown | حالة المباراة: Not Started</desc>
-    <category lang="ar">Sports</category>
+  <programme start="20260528164353 +0000" stop="20260528184353 +0000" channel="india_vs_jamaica">
+    <title lang="en">India vs Jamaica</title>
+    <desc lang="en">Tournament: Friendly | Channel: Epicsports | Commentator: NA | Status: Ended | Time: 12:00 AM</desc>
     <category lang="en">Sports</category>
-    <url>https://www.tv-yalla.live/matches/morocco-vs-burundi/</url>
-  </programme>
-  <programme start="20260526213000 +0300" stop="20260526232957 +0300" channel="nigeria-vs-zimbabwe">
-    <title lang="ar">Nigeria ضد Zimbabwe - بث مباشر</title>
-    <desc lang="ar">البطولة: Friendly Match | المعلق: Unknown | القناة الناقلة: Unknown | حالة المباراة: Not Started</desc>
-    <category lang="ar">Sports</category>
-    <category lang="en">Sports</category>
-    <url>https://www.tv-yalla.live/matches/nigeria-vs-zimbabwe/</url>
-  </programme>
-  <programme start="20260526214500 +0300" stop="20260526234457 +0300" channel="as-saint-etienne-vs-nice">
-    <title lang="ar">Saint-Étienne ضد Nice - بث مباشر</title>
-    <desc lang="ar">البطولة: Ligue 1 | المعلق: Nawfal Bashi | القناة الناقلة: beIN Sports 2 | حالة المباراة: Not Started</desc>
-    <category lang="ar">Sports</category>
-    <category lang="en">Sports</category>
-    <url>https://www.tv-yalla.live/matches/as-saint-etienne-vs-nice/</url>
+    <url>https://epic.djsofficial.com/2026/05/jam-ind.html</url>
   </programme>
 </tv>

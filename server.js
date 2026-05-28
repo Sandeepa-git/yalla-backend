@@ -32,8 +32,22 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const url = req.url;
-  
+  const url = req.url.split('?')[0]; // strip query strings
+
+  // API Route - Server Status (for hero badge)
+  if (url === '/api/status') {
+    const dataPath = path.join(DATA_DIR, 'yalla_live_data.json');
+    const hasData = fs.existsSync(dataPath);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      online: true,
+      hasData,
+      uptime: Math.floor(process.uptime()),
+      timestamp: new Date().toISOString()
+    }));
+    return;
+  }
+
   // API Route to Scrape Live
   if (url === '/api/scrape') {
     console.log('[SERVER] Scrape request received, running generator...');
@@ -132,11 +146,12 @@ function sendScrapeResponse(res, stdout, fallbackUsed) {
 
 server.listen(PORT, () => {
   console.log(`\n\x1b[35m========================================================\x1b[0m`);
-  console.log(`\x1b[32m[SERVER] Yalla Feed Center running successfully!\x1b[0m`);
-  console.log(`\x1b[36m[SERVER] Local Web Dashboard:\x1b[0m \x1b[4mhttp://localhost:${PORT}/\x1b[0m`);
-  console.log(`\x1b[36m[SERVER] Custom Matches XML Feed:\x1b[0m \x1b[4mhttp://localhost:${PORT}/data/yalla_live_matches.xml\x1b[0m`);
-  console.log(`\x1b[36m[SERVER] XMLTV EPG Feed:\x1b[0m \x1b[4mhttp://localhost:${PORT}/data/yalla_live_xmltv.xml\x1b[0m`);
+  console.log(`\x1b[32m[SERVER] ⚽ Yalla Sports Feed Center running!\x1b[0m`);
+  console.log(`\x1b[36m[SERVER] Dashboard:\x1b[0m \x1b[4mhttp://localhost:${PORT}/\x1b[0m`);
+  console.log(`\x1b[36m[SERVER] Matches XML:\x1b[0m \x1b[4mhttp://localhost:${PORT}/data/yalla_live_matches.xml\x1b[0m`);
+  console.log(`\x1b[36m[SERVER] XMLTV EPG:\x1b[0m \x1b[4mhttp://localhost:${PORT}/data/yalla_live_xmltv.xml\x1b[0m`);
   console.log(`\x1b[36m[SERVER] RSS Feed:\x1b[0m \x1b[4mhttp://localhost:${PORT}/data/yalla_live_feed.xml\x1b[0m`);
+  console.log(`\x1b[36m[SERVER] JSON Data:\x1b[0m \x1b[4mhttp://localhost:${PORT}/data/yalla_live_data.json\x1b[0m`);
   console.log(`\x1b[35m========================================================\x1b[0m\n`);
 
   // ========================================================

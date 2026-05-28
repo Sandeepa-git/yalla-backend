@@ -1,273 +1,343 @@
-<!-- 
-  ⚽ YALLA LIVE - PREMIUM STANDALONE LIVE SCORES WIDGET
-  ======================================================
-  Developed by Antigravity AI
-  
-  Instructions:
-  1. Go to your Blogger Dashboard > Layout.
-  2. Click "Add a Gadget" in the Sidebar or Main section.
-  3. Select "HTML/JavaScript".
-  4. Paste this ENTIRE code inside and save.
-  5. If you host your backend on Render, replace 'http://localhost:3000' on line 214 with your Render URL.
--->
+<!-- ✨ YALLA LIVE - ULTRA-PREMIUM STANDALONE DYNAMIC LIVE SCORES WIDGET (PRO EDITION) -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
 
-<!-- Include Premium Font -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<div class="yalla-matches-center">
+  <!-- 📺 DESCRIPTION-WISE SPORTS COVERAGE PORTAL -->
+  <div class="widget-intro-portal">
+    <div class="intro-card description-overview-card">
+      <div class="card-badge">✦ Coverage</div>
+      <h4 class="overview-title">Live Match Coverage & Streaming Portal</h4>
+      <p class="overview-desc">Welcome to Yalla Live premium match center. Below you can find real-time live stadium scores, television schedules, and high-quality streaming feeds. Explore our interactive coverage guide below to optimize your viewing experience.</p>
+      <div class="server-status-container">
+        <div class="status-metric"><span class="metric-dot live"></span>Status: <strong>ONLINE</strong></div>
+        <div class="status-metric">Sync: <strong>30s Realtime</strong></div>
+        <div class="status-metric">Feeds: <strong>UCL, EPL, LaLiga</strong></div>
+      </div>
+    </div>
+    
+    <div class="description-accordion">
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>✦ How to watch today's live streams?</span><span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>To watch the high-quality 4K live streams, scroll down to the Live Match Center below. Click on any active match card, and you will be instantly redirected to the corresponding high-speed stadium broadcast page.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>✦ Which television channels are broadcasting?</span><span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>Today's matches are broadcast live across global sports channels including beIN Sports HD, SSC Sports, and premium European sports stations. The active channel information is dynamically updated next to each match card.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>✦ Live Commentary & Audio Feed Details</span><span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>Matches feature live commentary in Arabic and English, powered by our premium live scraper feeds. You can select your preferred audio stream and commentator directly on the stream player page.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header" onclick="toggleAccordion(this)">
+          <span>✦ Server Synchronization & Buffering Guide</span><span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>Stadium feeds sync every 30 seconds. If a scraper feed takes a moment to load, please allow the Render backend server to spin up, or refresh your browser page to re-establish the stadium sync.</p>
+        </div>
+      </div>
+    </div>
 
-<div class="yalla-scores-widget">
-  <div class="widget-header">
-    <div class="header-main">
-      <span class="widget-icon">⚽</span>
+    <div class="news-ticker-container">
+      <span class="ticker-badge">✦ UPDATES:</span>
+      <div class="ticker-wrapper" id="news-ticker-wrapper">
+        <div class="ticker-item active">⬢ UCL Matchday: Global stadium feeds successfully synced and online.</div>
+        <div class="ticker-item">⬢ Stream Coverage: Premium English & Arabic commentators assigned.</div>
+        <div class="ticker-item">⬢ Live Data: All real-time league schedules syncing.</div>
+      </div>
+    </div>
+
+    <div class="premium-ad-billboard">
+      <div class="billboard-badge">SPONSOR</div>
+      <div class="billboard-content">
+        <h5>✦ Ultra HD Premium Streaming Feeds</h5>
+        <p>Experience zero buffering, 4K resolution, and multi-language commentary. Click below to stream instantly.</p>
+        <a href="#yalla-widget-header" class="billboard-cta" id="billboard-cta-btn">Unlock Live Streams Now</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-reveal-anchor" id="scroll-reveal-anchor">
+    <span class="scroll-text">▼ Scroll Down or Click Here to Load Live Match Streams & Stadium Feeds</span>
+    <span class="scroll-arrow-bounce">▼</span>
+  </div>
+
+  <div class="matches-header" id="yalla-widget-header">
+    <div class="header-brand">
+      <span class="live-dot-pulse"></span>
       <h3 class="widget-title">Live Match Center</h3>
     </div>
-    <span class="timezone-badge">Riyadh Time (UTC+3)</span>
+    <div class="header-meta">
+      <span class="league-count-badge" id="widget-match-count">0 Matches</span>
+      <span class="timezone-badge" id="visitor-tz-badge">Loading timezone...</span>
+    </div>
   </div>
   
-  <div id="yalla-widget-loader" class="widget-loader">
-    <div class="loader-spinner"></div>
-    <p>Loading live match scores...</p>
+  <div id="yalla-widget-loader" class="widget-loader" style="display: none;">
+    <div class="loader-ring"><div></div><div></div><div></div><div></div></div>
+    <p class="loader-text">Syncing live stadium feeds...</p>
   </div>
   
-  <div id="yalla-widget-grid" class="widget-grid" style="display: none;">
-    <!-- Live matches will be injected here dynamically -->
-  </div>
+  <div id="yalla-widget-grid" class="matches-grid" style="display: none;"></div>
 </div>
 
 <style>
-/* Scoped Widget Styling to prevent conflict with your existing Blogger Theme */
-.yalla-scores-widget {
-  font-family: 'Cairo', sans-serif;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.01);
-  margin-bottom: 20px;
-  direction: ltr; /* English LTR alignment */
-}
+.yalla-matches-center { font-family: 'Outfit', sans-serif; background: #ffffff; border: 1px solid rgba(0,0,0,0.05); border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(77,11,122,0.03); margin: 20px auto; position: relative; overflow: hidden; max-width: 800px; }
+.yalla-matches-center::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, #4d0b7a, #00b4d8); }
+.yalla-matches-center * { box-sizing: border-box; margin: 0; padding: 0; }
+.widget-intro-portal { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+.intro-card { background: #ffffff; border: 1px solid rgba(77,11,122,0.06); border-radius: 12px; padding: 16px; position: relative; overflow: hidden; transition: all 0.3s ease; }
+.intro-card:hover { transform: translateY(-1px); border-color: rgba(77,11,122,0.12); box-shadow: 0 6px 20px rgba(77,11,122,0.04); }
+.card-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 800; color: #4d0b7a; background: rgba(77,11,122,0.06); padding: 2px 8px; border-radius: 20px; text-transform: uppercase; }
+.overview-title { font-size: 15px; font-weight: 800; color: #1a1e29; margin-bottom: 8px; padding-right: 75px; }
+.overview-desc { font-size: 12px; color: #5f667d; line-height: 1.5; margin-bottom: 12px; }
+.server-status-container { display: flex; flex-wrap: wrap; gap: 12px; background: #f8fafc; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.02); }
+.status-metric { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #5f667d; font-weight: 500; }
+.status-metric strong { color: #1a1e29; }
+.metric-dot { width: 8px; height: 8px; border-radius: 50%; background: #2e7d32; }
+.metric-dot.live { background: #2e7d32; box-shadow: 0 0 0 3px rgba(46,125,80,0.2); animation: pulse-dot-key 1.8s infinite; }
+.description-accordion { display: flex; flex-direction: column; gap: 10px; }
+.accordion-item { background: #fdfdfd; border: 1px solid rgba(77,11,122,0.05); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; }
+.accordion-item.active { border-color: rgba(77,11,122,0.15); background: #ffffff; box-shadow: 0 4px 12px rgba(77,11,122,0.03); }
+.accordion-header { width: 100%; background: none; border: none; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; color: #1a1e29; padding: 12px 14px; text-align: left; display: flex; justify-content: space-between; align-items: center; cursor: pointer; outline: none; }
+.accordion-header:hover { background: rgba(77,11,122,0.02); color: #4d0b7a; }
+.accordion-icon { font-size: 12px; color: #00b4d8; transition: transform 0.3s ease; }
+.accordion-item.active .accordion-icon { transform: rotate(180deg); }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1); }
+.accordion-content p { padding: 0 14px 12px 14px; font-size: 12px; color: #5f667d; line-height: 1.5; }
+.news-ticker-container { background: #1a1e29; color: #ffffff; border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; overflow: hidden; }
+.ticker-badge { font-weight: 800; color: #00b4d8; letter-spacing: 0.5px; flex-shrink: 0; }
+.ticker-wrapper { position: relative; height: 16px; overflow: hidden; flex: 1; }
+.ticker-item { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateY(12px); transition: all 0.5s ease-in-out; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: rgba(255,255,255,0.9); }
+.ticker-item.active { opacity: 1; transform: translateY(0); }
+.premium-ad-billboard { background: linear-gradient(135deg, rgba(77,11,122,0.03), rgba(0,180,216,0.03)); border: 1px dashed rgba(77,11,122,0.2); border-radius: 12px; padding: 14px; position: relative; display: flex; flex-direction: column; gap: 6px; }
+.billboard-badge { position: absolute; top: 8px; right: 8px; font-size: 8px; font-weight: 900; background: #00b4d8; color: #ffffff; padding: 1px 5px; border-radius: 4px; }
+.billboard-content h5 { font-size: 13px; font-weight: 800; color: #4d0b7a; }
+.billboard-content p { font-size: 11px; color: #5f667d; line-height: 1.4; margin-bottom: 8px; padding-right: 50px; }
+.billboard-cta { display: inline-block; background: linear-gradient(135deg, #4d0b7a, #7c1fc5); color: #ffffff; font-size: 11px; font-weight: 800; text-decoration: none; padding: 6px 14px; border-radius: 6px; width: max-content; box-shadow: 0 4px 10px rgba(77,11,122,0.2); transition: all 0.2s ease; }
+.billboard-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 15px rgba(77,11,122,0.3); }
+.scroll-reveal-anchor { background: linear-gradient(90deg, #f4f6fa, #ffffff, #f4f6fa); border: 1px solid rgba(77,11,122,0.08); border-radius: 10px; padding: 12px 16px; margin: 10px 0 20px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.3s ease; }
+.scroll-reveal-anchor:hover { border-color: rgba(77,11,122,0.2); background: linear-gradient(90deg, #f1f3f7, #ffffff, #f1f3f7); }
+.scroll-reveal-anchor.syncing { border-color: #00b4d8; background: rgba(0,180,216,0.02); cursor: default; }
+.scroll-text { font-size: 12px; font-weight: 700; color: #4d0b7a; display: flex; align-items: center; gap: 6px; }
+.scroll-arrow-bounce { font-size: 12px; font-weight: 800; color: #00b4d8; animation: arrow-bounce-key 1.5s infinite; }
+.scroll-sync-spin { font-size: 14px; animation: loader-ring-spin 1s infinite linear; }
+@keyframes arrow-bounce-key { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3px); } }
 
-.yalla-scores-widget * {
-  box-sizing: border-box;
-}
+/* Original Styles */
+.matches-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 14px; margin-bottom: 16px; }
+.header-brand { display: flex; align-items: center; gap: 10px; }
+.live-dot-pulse { width: 10px; height: 10px; background: #00b4d8; border-radius: 50%; animation: pulse-dot-key 1.8s infinite; }
+.widget-title { font-size: 18px; font-weight: 800; color: #1a1e29; letter-spacing: -0.5px; text-transform: uppercase; background: linear-gradient(135deg, #4d0b7a, #00b4d8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.league-count-badge { font-size: 11px; font-weight: 800; color: #ffffff; background: #4d0b7a; padding: 3px 10px; border-radius: 20px; }
+.timezone-badge { font-size: 11px; font-weight: 700; color: #5f667d; background: #f4f6fa; padding: 4px 10px; border-radius: 6px; }
+.matches-grid { display: flex; flex-direction: column; gap: 14px; }
+.match-card { background: #fdfdfd; border: 1px solid rgba(0,0,0,0.05); border-radius: 12px; padding: 16px; position: relative; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+.match-card:hover { transform: translateY(-2px); border-color: rgba(77,11,122,0.15); background: #ffffff; box-shadow: 0 8px 24px rgba(77,11,122,0.05); }
+.card-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(0,0,0,0.05); padding-bottom: 8px; }
+.league-tag { font-size: 12px; font-weight: 700; color: #4d0b7a; }
+.channel-tag { font-size: 11px; font-weight: 700; background: #f1f3f7; padding: 2px 8px; border-radius: 20px; color: #1a1e29; }
+.lineup-grid { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.team-side { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.team-side.home { justify-content: flex-end; text-align: right; }
+.team-side.away { justify-content: flex-start; text-align: left; }
+.team-logo { width: 40px; height: 40px; background: #ffffff; border-radius: 50%; padding: 4px; border: 1px solid rgba(0,0,0,0.06); object-fit: contain; flex-shrink: 0; }
+.team-name { font-size: 15px; font-weight: 700; color: #1a1e29; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.center-scores { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 100px; flex-shrink: 0; }
+.match-time { font-size: 11px; font-weight: 700; background: rgba(77,11,122,0.05); color: #4d0b7a; padding: 2px 8px; border-radius: 4px; }
+.score-board { font-size: 22px; font-weight: 800; letter-spacing: 2px; color: #1a1e29; }
+.status-badge { font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 30px; text-transform: uppercase; }
+.status-badge.live { background: rgba(220,53,69,0.08); color: #dc3545; border: 1px solid rgba(220,53,69,0.2); animation: live-blink-key 1.2s infinite; }
+.status-badge.not-started { background: rgba(0, 180, 216, 0.08); color: #0077b6; border: 1px solid rgba(0, 180, 216, 0.2); }
+.status-badge.ended { background: #f1f3f7; color: #5f667d; border: 1px solid rgba(0,0,0,0.06); }
+.card-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #5f667d; background: #f8fafc; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.02); }
+.commentator-tag { font-weight: 600; }
+.action-cta { font-weight: 700; color: #00b4d8; }
 
-.yalla-scores-widget .widget-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #4d0b7a;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
+/* Loader Styles */
+.widget-loader { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 10px; color: #5f667d; font-weight: 600; gap: 15px; }
+.loader-ring { display: inline-block; position: relative; width: 40px; height: 40px; }
+.loader-ring div { box-sizing: border-box; display: block; position: absolute; width: 32px; height: 32px; margin: 4px; border: 3px solid rgba(77,11,122,0.1); border-radius: 50%; animation: loader-ring-spin 1.2s cubic-bezier(0.5,0,0.5,1) infinite; border-top-color: #4d0b7a; }
+.loader-ring div:nth-child(1) { animation-delay: -0.45s; }
+.loader-ring div:nth-child(2) { animation-delay: -0.3s; }
+.loader-ring div:nth-child(3) { animation-delay: -0.15s; }
+.loader-text { font-size: 13px; letter-spacing: 0.5px; animation: pulse-text 1.5s infinite; }
 
-.yalla-scores-widget .header-main {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+@keyframes pulse-dot-key { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.5); } 70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 180, 216, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 180, 216, 0); } }
+@keyframes live-blink-key { 50% { opacity: 0.5; } }
+@keyframes loader-ring-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulse-text { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
 
-.yalla-scores-widget .widget-icon {
-  font-size: 20px;
-  animation: bounce 2s infinite;
-}
-
-.yalla-scores-widget .widget-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: #4d0b7a;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.yalla-scores-widget .timezone-badge {
-  font-size: 11px;
-  font-weight: 700;
-  color: #5f667d;
-  background: #f4f6fa;
-  padding: 3px 8px;
-  border-radius: 20px;
-  border: 1px solid rgba(0,0,0,0.03);
-}
-
-/* Match Grid & Cards */
-.yalla-scores-widget .widget-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.yalla-scores-widget .match-card {
-  background: #fafbfc;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 8px;
-  padding: 12px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.yalla-scores-widget .match-card:hover {
-  transform: translateY(-1px);
-  border-color: rgba(77, 11, 122, 0.15);
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(77, 11, 122, 0.04);
-}
-
-.yalla-scores-widget .match-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.yalla-scores-widget .team {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-}
-
-.yalla-scores-widget .team.home {
-  justify-content: flex-start;
-}
-
-.yalla-scores-widget .team.away {
-  justify-content: flex-end;
-  flex-direction: row-reverse;
-}
-
-.yalla-scores-widget .team-logo {
-  width: 36px;
-  height: 36px;
-  background: #ffffff;
-  border-radius: 50%;
-  padding: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  object-fit: contain;
-}
-
-.yalla-scores-widget .team-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1a1e29;
-}
-
-.yalla-scores-widget .match-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  min-width: 100px;
-  padding: 0 5px;
-}
-
-.yalla-scores-widget .match-time {
-  font-size: 11px;
-  font-weight: 700;
-  background: rgba(77, 11, 122, 0.05);
-  padding: 2px 8px;
-  border-radius: 4px;
-  color: #4d0b7a;
-  border: 1px solid rgba(77, 11, 122, 0.08);
-}
-
-.yalla-scores-widget .match-score {
-  font-size: 16px;
-  font-weight: 800;
-  color: #1a1e29;
-  letter-spacing: 1px;
-}
-
-.yalla-scores-widget .match-status {
-  font-size: 10px;
-  font-weight: 800;
-  padding: 2px 7px;
-  border-radius: 12px;
-  text-transform: uppercase;
-}
-
-.yalla-scores-widget .match-status.not-started {
-  background: rgba(0, 180, 216, 0.06);
-  color: #0077b6;
-  border: 1px solid rgba(0, 180, 216, 0.15);
-}
-
-.yalla-scores-widget .match-status.live {
-  background: rgba(183, 28, 28, 0.06);
-  color: #b71c1c;
-  border: 1px solid rgba(183, 28, 28, 0.15);
-  animation: widget-blink 1.2s infinite;
-}
-
-.yalla-scores-widget .match-status.ended {
-  background: #f1f3f7;
-  color: #5f667d;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Match Footer Info */
-.yalla-scores-widget .match-meta {
-  border-top: 1px solid rgba(0, 0, 0, 0.03);
-  padding-top: 6px;
-  display: flex;
-  justify-content: space-around;
-  font-size: 11px;
-  color: #5f667d;
-  background: #f8fafc;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.yalla-scores-widget .meta-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* Loader & Status Styles */
-.yalla-scores-widget .widget-loader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 10px;
-  color: #5f667d;
-  font-size: 12px;
-  font-weight: 600;
-  gap: 10px;
-}
-
-.yalla-scores-widget .loader-spinner {
-  width: 28px;
-  height: 28px;
-  border: 3px solid rgba(77, 11, 122, 0.1);
-  border-top-color: #4d0b7a;
-  border-radius: 50%;
-  animation: widget-spin 1s linear infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes widget-spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes widget-blink {
-  50% { opacity: 0.6; }
+/* Mobile Scaler */
+@media (max-width: 480px) {
+  .yalla-matches-center { padding: 12px; }
+  .widget-intro-portal { gap: 12px; }
+  .intro-card { padding: 12px; }
+  .overview-title { font-size: 13px; padding-right: 50px; }
+  .overview-desc { font-size: 11px; }
+  .server-status-container { flex-direction: column; gap: 6px; padding: 8px 10px; }
+  .accordion-header { font-size: 11px; padding: 10px 12px; }
+  .accordion-content p { font-size: 10px; padding: 0 12px 10px 12px; }
+  .news-ticker-container { padding: 6px 10px; font-size: 10px; }
+  .ticker-wrapper { height: 14px; }
+  .ticker-item { transform: translateY(10px); }
+  .premium-ad-billboard { padding: 10px; }
+  .billboard-content h5 { font-size: 11px; }
+  .billboard-content p { font-size: 10px; padding-right: 30px; }
+  .billboard-cta { font-size: 9px; padding: 4px 10px; }
+  .scroll-text { font-size: 10px; }
+  .match-card { padding: 10px; gap: 8px; }
+  .lineup-grid { gap: 6px; }
+  .team-logo { width: 30px; height: 30px; padding: 2px; }
+  .team-name { font-size: 13px; }
+  .score-board { font-size: 18px; letter-spacing: 1px; }
+  .center-scores { min-width: 75px; gap: 2px; }
+  .match-time { font-size: 10px; padding: 1px 6px; }
+  .card-top, .card-bottom { padding: 4px 8px; font-size: 11px; }
 }
 </style>
 
+<!-- ⚡ REAL-TIME SCRAPED DATA SYNC SCRIPT -->
 <script type="text/javascript">
 (function() {
-  // CONFIGURATION: Replace this URL with your live public Render URL when hosted!
-  const FEED_CENTER_URL = 'http://localhost:3000';
+  const FEED_CENTER_URL = 'https://yalla-backend-9por.onrender.com';
+  let feedsFetched = false;
 
-  async function fetchLiveScores() {
+  // ─── Timezone Utilities ───────────────────────────────────────────────────
+  // The backend scraper broadcasts times in UTC+3 (Arabia Standard Time / Riyadh)
+  const SOURCE_OFFSET_HOURS = 3;
+
+  // Detect visitor's IANA timezone name & UTC offset in hours
+  function getVisitorTimezone() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const offsetMin = -new Date().getTimezoneOffset(); // minutes ahead of UTC
+      return { tz, offsetHours: offsetMin / 60 };
+    } catch (e) {
+      return { tz: 'UTC', offsetHours: 0 };
+    }
+  }
+
+  // Format a UTC offset number as a readable string e.g. +5:30, -4:00
+  function formatOffset(hours) {
+    const sign = hours >= 0 ? '+' : '-';
+    const abs = Math.abs(hours);
+    const h = Math.floor(abs);
+    const m = Math.round((abs - h) * 60);
+    return sign + String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+  }
+
+  // Get a short, human-friendly city label from IANA tz (last segment)
+  function tzCity(ianaName) {
+    const parts = ianaName.split('/');
+    return parts[parts.length - 1].replace(/_/g, ' ');
+  }
+
+  // Parse any time string (12-hour AM/PM like "9:00 PM" or 24-hour like "21:00")
+  // into total minutes since midnight in the source timezone (UTC+3)
+  function parseTimeToMinutes(timeStr) {
+    if (!timeStr) return null;
+    const trimmed = timeStr.trim();
+
+    // Try 12-hour format: "9:00 PM", "09:30 AM"
+    const ampmMatch = trimmed.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+    if (ampmMatch) {
+      let h = parseInt(ampmMatch[1], 10);
+      const m = parseInt(ampmMatch[2], 10);
+      const period = ampmMatch[3].toUpperCase();
+      if (period === 'PM' && h < 12) h += 12;
+      if (period === 'AM' && h === 12) h = 0;
+      return h * 60 + m;
+    }
+
+    // Try 24-hour format: "21:30", "9:30"
+    const h24Match = trimmed.match(/^(\d{1,2}):(\d{2})$/);
+    if (h24Match) {
+      return parseInt(h24Match[1], 10) * 60 + parseInt(h24Match[2], 10);
+    }
+
+    return null; // unparseable
+  }
+
+  // Convert a time string from UTC+3 (source) → visitor local time.
+  // Returns a clean 12-hour string like "9:30 PM" for display.
+  function convertMatchTime(timeStr, visitorOffsetHours) {
+    const sourceMins = parseTimeToMinutes(timeStr);
+    if (sourceMins === null) return timeStr; // pass through if unparseable
+
+    // Convert source (UTC+3) → UTC → visitor local
+    const utcMins = sourceMins - SOURCE_OFFSET_HOURS * 60;
+    const localMins = utcMins + visitorOffsetHours * 60;
+
+    // Wrap into [0, 1440)
+    const wrapped = ((localMins % 1440) + 1440) % 1440;
+    const lh = Math.floor(wrapped / 60);
+    const lm = wrapped % 60;
+
+    // Format as 12-hour AM/PM
+    const period = lh >= 12 ? 'PM' : 'AM';
+    const displayH = lh % 12 === 0 ? 12 : lh % 12;
+    return String(displayH) + ':' + String(lm).padStart(2, '0') + ' ' + period;
+  }
+
+  // Detect once, used throughout
+  const visitorTZ = getVisitorTimezone();
+
+  // Update the header timezone badge
+  function updateTimezoneBadge() {
+    const badge = document.getElementById('visitor-tz-badge');
+    if (!badge) return;
+    const label = tzCity(visitorTZ.tz);
+    const offset = formatOffset(visitorTZ.offsetHours);
+    badge.textContent = 'UTC' + offset + ' (' + label + ')';
+    badge.title = visitorTZ.tz;
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
+  window.toggleAccordion = function(element) {
+    const item = element.parentElement;
+    const content = item.querySelector('.accordion-content');
+    const isExpanded = item.classList.contains('active');
+    
+    document.querySelectorAll('.accordion-item').forEach(i => {
+      i.classList.remove('active');
+      const c = i.querySelector('.accordion-content');
+      if (c) c.style.maxHeight = null;
+    });
+    
+    if (!isExpanded) {
+      item.classList.add('active');
+      content.style.maxHeight = content.scrollHeight + 'px';
+    }
+  };
+
+  function initNewsTicker() {
+    const items = document.querySelectorAll('.ticker-item');
+    if (items.length <= 1) return;
+    let activeIdx = 0;
+    setInterval(() => {
+      items[activeIdx].classList.remove('active');
+      activeIdx = (activeIdx + 1) % items.length;
+      items[activeIdx].classList.add('active');
+    }, 4000);
+  }
+
+  async function fetchLiveScoresPro() {
     const grid = document.getElementById('yalla-widget-grid');
     const loader = document.getElementById('yalla-widget-loader');
+    const matchCountBadge = document.getElementById('widget-match-count');
     if (!grid || !loader) return;
 
     try {
@@ -276,68 +346,155 @@
       
       if (json.success && json.data.matches && json.data.matches.length > 0) {
         let html = '';
-        json.data.matches.forEach(m => {
-          const statusClass = m.statusClass === 'live' ? 'live' : (m.statusClass === 'finished' ? 'ended' : 'not-started');
+        const matches = json.data.matches;
+        
+        if (matchCountBadge) {
+          matchCountBadge.textContent = `${matches.length} Matches`;
+        }
+
+        matches.forEach(m => {
+          const isLive = m.statusClass === 'live';
+          const isEnded = m.statusClass === 'finished';
+          const statusClass = isLive ? 'live' : (isEnded ? 'ended' : 'not-started');
+          
           let statusText = 'Not Started';
-          if (m.statusClass === 'live') statusText = 'LIVE 📡';
-          if (m.statusClass === 'finished') statusText = 'Ended';
-          if (m.statusText && m.statusText !== 'لم تبدأ بعد' && m.statusText !== 'انتهت' && m.statusText !== 'not-started') {
-            statusText = m.statusText;
+          let actionLabel = 'Watch Live Stream ▸';
+
+          if (isLive) {
+            statusText = 'LIVE NOW ⎔';
+            actionLabel = 'Watch Live Stream ✦';
+          } else if (isEnded) {
+            statusText = 'FULL TIME';
+            actionLabel = 'View Match Highlights ✦';
+          } else {
+            if (m.statusText && m.statusText !== 'لم تبدأ بعد' && m.statusText !== 'not-started') {
+              statusText = m.statusText;
+            } else {
+              statusText = 'Not Started';
+            }
+            actionLabel = 'Watch Live Stream ▸';
           }
 
-          // English fallback translations
           if (statusText === 'لم تبدأ بعد') statusText = 'Not Started';
-          if (statusText === 'انتهت') statusText = 'Ended';
+          if (statusText === 'انتهت') statusText = 'FULL TIME';
+
+          let displayScore = m.score || '0 - 0';
+          if (displayScore.trim() === '0' || displayScore.trim() === '0-0') {
+            displayScore = '0 - 0';
+          }
+
+          let displayComm = m.commentator || 'Premium Feed';
+          if (displayComm.trim() === 'Unknown') displayComm = 'Premium Feed';
+
+          let displayChannel = m.channel || 'beIN Sports HD';
+          if (displayChannel.trim() === 'Unknown') displayChannel = 'beIN Sports HD';
 
           html += `
             <div class="match-card" onclick="window.open('${m.link}', '_blank')">
-              <div class="match-inner">
-                <div class="team home">
-                  <img class="team-logo" src="${m.team1.logo || 'https://www.tv-yalla.live/wp-content/uploads/2026/05/cropped-لنثصلث-32x32.png'}" alt="${m.team1.name}"/>
+              <div class="card-top">
+                <span class="league-tag">⬢ ${m.tournament}</span>
+                <span class="channel-tag">⎔ ${displayChannel}</span>
+              </div>
+              
+              <div class="lineup-grid">
+                <div class="team-side home">
                   <span class="team-name">${m.team1.name}</span>
+                  <img class="team-logo" src="${m.team1.logo || 'https://www.tv-yalla.live/wp-content/uploads/2026/05/cropped-لنثصلث-32x32.png'}" alt="${m.team1.name}" />
                 </div>
-                <div class="match-center">
-                  <span class="match-time">${m.time}</span>
-                  <span class="match-score">${m.score}</span>
-                  <span class="match-status ${statusClass}">${statusText}</span>
+                <div class="center-scores">
+                  <span class="match-time" title="Riyadh time: ${m.time} (UTC+3)">${convertMatchTime(m.time, visitorTZ.offsetHours)} 🕐</span>
+                  <span class="score-board">${displayScore}</span>
+                  <span class="status-badge ${statusClass}">${statusText}</span>
                 </div>
-                <div class="team away">
-                  <img class="team-logo" src="${m.team2.logo || 'https://www.tv-yalla.live/wp-content/uploads/2026/05/cropped-لنثصلث-32x32.png'}" alt="${m.team2.name}"/>
+                <div class="team-side away">
+                  <img class="team-logo" src="${m.team2.logo || 'https://www.tv-yalla.live/wp-content/uploads/2026/05/cropped-لنثصلث-32x32.png'}" alt="${m.team2.name}" />
                   <span class="team-name">${m.team2.name}</span>
                 </div>
               </div>
-              <div class="match-meta">
-                <span class="meta-item">📺 ${m.channel}</span>
-                <span class="meta-item">🎤 ${m.commentator}</span>
-                <span class="meta-item">🏆 ${m.tournament}</span>
+              
+              <div class="card-bottom">
+                <span class="commentator-tag">🎙️ Commentator: ${displayComm}</span>
+                <span class="action-cta">${actionLabel}</span>
               </div>
             </div>
           `;
         });
+        
         grid.innerHTML = html;
         loader.style.display = 'none';
-        grid.style.display = 'grid';
+        grid.style.display = 'flex';
       } else {
-        showFallbackError("No live matches scheduled for today.");
+        showFallbackErrorPro("No live matches scheduled for today.");
       }
     } catch (err) {
-      console.log("Feed Center offline or blocked by CORS. Using fallback matches.");
-      showFallbackError("Feed Center Offline. Please start your local server or deploy to Render.");
+      console.log("CORS/Fetch error: ", err);
+      showFallbackErrorPro("Server Sync Failed. Please verify your Render instance is active.");
     }
   }
 
-  function showFallbackError(message) {
+  function showFallbackErrorPro(message) {
     const loader = document.getElementById('yalla-widget-loader');
     if (loader) {
       loader.innerHTML = `
-        <div style="font-size:24px;">⚽</div>
-        <p style="color:#b71c1c; font-weight:700;">${message}</p>
-        <p style="font-size:11px; color:#5f667d; margin-top:-5px;">Make sure your scraper server is running.</p>
+        <div style="font-size:24px;">⬢</div>
+        <p style="color:#dc3545; font-weight:700; font-size:14px; letter-spacing:-0.2px;">${message}</p>
+        <p style="font-size:11px; color:#5f667d; margin-top:-5px;">Pinging scraper backup feeds...</p>
       `;
     }
   }
 
-  // Run dynamic fetch on load
-  window.addEventListener('load', fetchLiveScores);
+  function initScrollReveal() {
+    const anchor = document.getElementById('scroll-reveal-anchor');
+    const ctaBtn = document.getElementById('billboard-cta-btn');
+    const loader = document.getElementById('yalla-widget-loader');
+    
+    function triggerFetch() {
+      if (feedsFetched) return;
+      feedsFetched = true;
+      window.removeEventListener('scroll', handleScroll);
+      if (loader) loader.style.display = 'flex';
+      if (anchor) {
+        anchor.classList.add('syncing');
+        anchor.innerHTML = `
+          <span class="scroll-text">✦ Connecting to stadium feeds & live streams...</span>
+          <span class="scroll-sync-spin">⬢</span>
+        `;
+      }
+      fetchLiveScoresPro();
+      setTimeout(() => { if (anchor) anchor.style.display = 'none'; }, 3500);
+    }
+    
+    function handleScroll() {
+      if (feedsFetched) return;
+      const anchorRect = anchor.getBoundingClientRect();
+      if (window.scrollY > 120 || anchorRect.top < (window.innerHeight - 100)) {
+        triggerFetch();
+      }
+    }
+    
+    window.addEventListener('scroll', handleScroll);
+    if (anchor) {
+      anchor.addEventListener('click', () => {
+        triggerFetch();
+        const headerSection = document.getElementById('yalla-widget-header');
+        if (headerSection) headerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        triggerFetch();
+        const headerSection = document.getElementById('yalla-widget-header');
+        if (headerSection) headerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    setTimeout(() => { if (!feedsFetched) triggerFetch(); }, 15000);
+  }
+
+  window.addEventListener('load', () => {
+    updateTimezoneBadge();
+    initNewsTicker();
+    initScrollReveal();
+  });
 })();
 </script>
